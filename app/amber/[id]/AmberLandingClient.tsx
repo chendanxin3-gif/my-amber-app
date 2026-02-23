@@ -109,10 +109,12 @@ export default function AmberLandingClient({
             />
           </svg>
           <span
-            className="text-lg tracking-widest"
+            className="tracking-widest"
             style={{
-              color: "rgba(139,115,85,0.65)",
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 700,
+              fontSize: "1.15rem",
+              color: "rgba(139,115,85,0.8)",
             }}
           >
             点击水面，继续

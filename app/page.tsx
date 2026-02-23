@@ -181,7 +181,7 @@ export default function LandingPage() {
               letterSpacing: "0.04em",
             }}
           >
-            告别人情世故的点赞，收集只属于你的关系印记。生成专属链接，邀请与你一期一会的人，用他们的目光，为你凝固一枚永恒的关系琥珀。
+            告别社交场点赞式的寒暄，收集无可替代的关系印记。借他者的眼睛，凝固那个你未曾察觉的、真实的自己。
           </p>
 
           <p
@@ -194,7 +194,7 @@ export default function LandingPage() {
               letterSpacing: "0.04em",
             }}
           >
-            人无法真正看清自己。请借他者的眼睛，凝固那个你未曾察觉的自己。
+            生成专属链接，邀一期一会之人，为你封存一枚关系琥珀。
           </p>
         </div>
 
@@ -220,9 +220,9 @@ export default function LandingPage() {
           <span
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 300,
-              fontSize: "0.68rem",
-              color: "rgba(139,115,85,0.5)",
+              fontWeight: 700,
+              fontSize: "0.95rem",
+              color: "rgba(139,115,85,0.7)",
               letterSpacing: "0.22em",
             }}
           >
