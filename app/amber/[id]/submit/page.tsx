@@ -3,16 +3,17 @@
 import { useState, useRef, use } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
+import InkBackground from "@/app/components/InkBackground";
 
-const AMBER = "#D4AF37";
-const AMBER_BORDER = "rgba(212,175,55,0.35)";
+const AMBER = "#8b7355";
+const AMBER_BORDER = "rgba(139,115,85,0.3)";
 
 const inputBase: React.CSSProperties = {
   width: "100%",
   background: "transparent",
   border: "none",
-  color: "#e8e0d0",
-  fontFamily: "var(--font-geist-sans), sans-serif",
+  color: "#262220",
+  fontFamily: "var(--font-noto-sans-sc), sans-serif",
   fontSize: "0.95rem",
   lineHeight: "1.9",
   padding: "8px 0",
@@ -42,11 +43,11 @@ function AmberTextarea({
       onBlur={() => setFocused(false)}
       style={{
         ...inputBase,
-        borderBottom: `1px solid ${focused ? AMBER : "rgba(255,255,255,0.1)"}`,
+        borderBottom: `1px solid ${focused ? AMBER : "rgba(38,34,32,0.12)"}`,
         resize: "none",
         transition: "border-bottom-color 600ms ease-out",
       }}
-      className="placeholder:text-white/20 w-full"
+      className="placeholder:text-black/35 w-full"
     />
   );
 }
@@ -72,10 +73,10 @@ function AmberInput({
       style={{
         ...inputBase,
         fontSize: "0.9rem",
-        borderBottom: `1px solid ${focused ? AMBER : "rgba(255,255,255,0.1)"}`,
+        borderBottom: `1px solid ${focused ? AMBER : "rgba(38,34,32,0.12)"}`,
         transition: "border-bottom-color 600ms ease-out",
       }}
-      className="placeholder:text-white/20 w-full"
+      className="placeholder:text-black/35 w-full"
     />
   );
 }
@@ -112,7 +113,6 @@ export default function SubmitPage({ params }: PageProps) {
 
     let imageUrl: string | null = null;
 
-    // 上传图片到 Supabase Storage（bucket: amber-images）
     if (photoFile) {
       const ext = photoFile.name.split(".").pop() ?? "jpg";
       const fileName = `${profileId}/${Date.now()}.${ext}`;
@@ -132,7 +132,6 @@ export default function SubmitPage({ params }: PageProps) {
       imageUrl = urlData.publicUrl;
     }
 
-    // 写入 ambers 表
     const { error: insertError } = await supabase.from("ambers").insert({
       profile_id: profileId,
       q1_three_words: q1.trim(),
@@ -154,24 +153,20 @@ export default function SubmitPage({ params }: PageProps) {
     setStatus("success");
   };
 
-  // ── 成功页：病毒裂变 ──
+  // ── 成功页 ──
   if (status === "success") {
     return (
       <main
-        className="min-h-screen flex flex-col items-center justify-center px-6"
-        style={{ background: "#0a0a0a" }}
+        className="relative min-h-screen flex flex-col items-center justify-center px-6"
+        style={{ background: "#F4F1EE" }}
       >
-        <div
-          className="pointer-events-none fixed inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 50% at 50% 60%, rgba(212,175,55,0.04) 0%, transparent 70%)",
-          }}
-        />
+        <InkBackground />
 
         <div
           style={{
-            background: "rgba(255,255,255,0.03)",
+            position: "relative",
+            zIndex: 1,
+            background: "rgba(255,255,255,0.60)",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
             border: `1px solid ${AMBER_BORDER}`,
@@ -180,7 +175,7 @@ export default function SubmitPage({ params }: PageProps) {
             maxWidth: "480px",
             width: "100%",
             textAlign: "center",
-            boxShadow: "0 0 60px rgba(212,175,55,0.06)",
+            boxShadow: "0 2px 40px rgba(139,115,85,0.08)",
           }}
         >
           {/* 琥珀印记 */}
@@ -188,7 +183,7 @@ export default function SubmitPage({ params }: PageProps) {
             className="mx-auto mb-8 w-12 h-12 rounded-full flex items-center justify-center"
             style={{
               border: `1px solid ${AMBER_BORDER}`,
-              background: "rgba(212,175,55,0.06)",
+              background: "rgba(139,115,85,0.06)",
             }}
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -205,8 +200,9 @@ export default function SubmitPage({ params }: PageProps) {
           <h2
             className="text-xl tracking-widest mb-4"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "#e8e0d0",
+              fontFamily: '"PingFangShiGuang", serif',
+              color: "rgba(38,34,32,0.85)",
+              letterSpacing: "0.22em",
             }}
           >
             琥珀已凝固
@@ -214,7 +210,10 @@ export default function SubmitPage({ params }: PageProps) {
 
           <p
             className="text-sm leading-loose mb-10"
-            style={{ color: "rgba(232,224,208,0.5)" }}
+            style={{
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              color: "rgba(38,34,32,0.7)",
+            }}
           >
             感谢你在这一期一会里，留下了你的目光。
             <br />
@@ -224,26 +223,30 @@ export default function SubmitPage({ params }: PageProps) {
           {/* 分割线 */}
           <div
             className="h-px mb-10"
-            style={{ background: "rgba(255,255,255,0.06)" }}
+            style={{ background: "rgba(38,34,32,0.06)" }}
           />
 
           {/* 病毒裂变区 */}
           <p
-            className="text-xs leading-relaxed mb-6"
-            style={{ color: "rgba(232,224,208,0.35)" }}
+            className="text-sm leading-relaxed mb-6"
+            style={{
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              color: "rgba(38,34,32,0.55)",
+            }}
           >
             你想知道别人眼中的你吗？
           </p>
 
           <Link
             href="/"
-            className="inline-block px-8 py-3 text-xs tracking-widest transition-all duration-700 ease-out"
+            className="inline-block px-8 py-3 text-sm tracking-widest transition-all duration-700 ease-out"
             style={{
-              fontFamily: "var(--font-geist-sans), sans-serif",
-              color: "rgba(212,175,55,0.9)",
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 400,
+              color: "rgba(139,115,85,0.9)",
               border: `1px solid ${AMBER_BORDER}`,
               borderRadius: "2px",
-              background: "rgba(212,175,55,0.05)",
+              background: "rgba(139,115,85,0.05)",
               letterSpacing: "0.15em",
             }}
           >
@@ -256,36 +259,42 @@ export default function SubmitPage({ params }: PageProps) {
 
   // ── 填写页 ──
   return (
-    <main className="min-h-screen w-full" style={{ background: "#0a0a0a" }}>
+    <main className="relative min-h-screen w-full" style={{ background: "#F4F1EE" }}>
+      <InkBackground />
+
       {/* 顶部导航 */}
-      <header className="px-6 md:px-16 pt-10 pb-2">
+      <header className="relative px-6 md:px-16 pt-10 pb-2" style={{ zIndex: 1 }}>
         <Link
           href={`/amber/${profileId}`}
-          className="text-xs tracking-widest"
+          className="text-sm tracking-widest"
           style={{
-            color: "rgba(212,175,55,0.5)",
-            fontFamily: "var(--font-geist-sans)",
+            color: "rgba(139,115,85,0.65)",
+            fontFamily: "var(--font-noto-sans-sc), sans-serif",
           }}
         >
           ← 返回
         </Link>
       </header>
 
-      <div className="max-w-2xl mx-auto px-6 md:px-8 pt-10 pb-24">
+      <div className="relative max-w-2xl mx-auto px-6 md:px-8 pt-10 pb-24" style={{ zIndex: 1 }}>
         {/* 页面标题 */}
         <div className="mb-16">
           <h1
             className="text-2xl md:text-3xl tracking-widest mb-4"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "#e8e0d0",
+              fontFamily: '"PingFangShiGuang", serif',
+              color: "rgba(38,34,32,0.85)",
+              letterSpacing: "0.18em",
             }}
           >
-            封存你的目光
+            封存你的记忆琥珀
           </h1>
           <p
             className="text-sm leading-relaxed"
-            style={{ color: "rgba(232,224,208,0.4)" }}
+            style={{
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              color: "rgba(38,34,32,0.6)",
+            }}
           >
             无需完美，只需真实。你的第一直觉，往往是最清澈的。
           </p>
@@ -295,26 +304,40 @@ export default function SubmitPage({ params }: PageProps) {
         <section className="mb-16">
           <div className="flex items-center gap-4 mb-10">
             <span
-              className="text-xs tracking-widest"
-              style={{ color: "rgba(212,175,55,0.6)" }}
+              className="text-sm tracking-widest"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 500,
+                color: "rgba(139,115,85,0.75)",
+              }}
             >
               必填
             </span>
             <div
               className="flex-1 h-px"
-              style={{ background: "rgba(212,175,55,0.12)" }}
+              style={{ background: "rgba(139,115,85,0.12)" }}
             />
           </div>
 
           {/* Q1 三个词 */}
           <div className="mb-12">
             <label
-              className="block text-xs tracking-widest mb-5"
-              style={{ color: "rgba(232,224,208,0.45)" }}
+              className="block text-sm tracking-widest mb-5"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 500,
+                color: "rgba(38,34,32,0.65)",
+              }}
             >
               01 &nbsp;·&nbsp; 你眼中的 TA
             </label>
-            <p className="text-sm mb-4" style={{ color: "rgba(232,224,208,0.7)" }}>
+            <p
+              className="text-sm mb-4"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                color: "rgba(38,34,32,0.82)",
+              }}
+            >
               用三个词形容 TA。
             </p>
             <AmberTextarea
@@ -328,12 +351,22 @@ export default function SubmitPage({ params }: PageProps) {
           {/* Q2 印象变迁 */}
           <div className="mb-12">
             <label
-              className="block text-xs tracking-widest mb-5"
-              style={{ color: "rgba(232,224,208,0.45)" }}
+              className="block text-sm tracking-widest mb-5"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 500,
+                color: "rgba(38,34,32,0.65)",
+              }}
             >
               02 &nbsp;·&nbsp; 印象变迁
             </label>
-            <p className="text-sm mb-4" style={{ color: "rgba(232,224,208,0.7)" }}>
+            <p
+              className="text-sm mb-4"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                color: "rgba(38,34,32,0.82)",
+              }}
+            >
               你第一次见到 TA，和现在对 TA 的印象，有什么变化？
             </p>
             <AmberTextarea
@@ -347,12 +380,22 @@ export default function SubmitPage({ params }: PageProps) {
           {/* Q3 天赋感知 */}
           <div className="mb-2">
             <label
-              className="block text-xs tracking-widest mb-5"
-              style={{ color: "rgba(232,224,208,0.45)" }}
+              className="block text-sm tracking-widest mb-5"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 500,
+                color: "rgba(38,34,32,0.65)",
+              }}
             >
               03 &nbsp;·&nbsp; 天赋感知
             </label>
-            <p className="text-sm mb-4" style={{ color: "rgba(232,224,208,0.7)" }}>
+            <p
+              className="text-sm mb-4"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                color: "rgba(38,34,32,0.82)",
+              }}
+            >
               你觉得 TA 在什么事情上，比大多数人更有天赋或者更让你印象深刻？
             </p>
             <AmberTextarea
@@ -368,26 +411,40 @@ export default function SubmitPage({ params }: PageProps) {
         <section className="mb-16">
           <div className="flex items-center gap-4 mb-10">
             <span
-              className="text-xs tracking-widest"
-              style={{ color: "rgba(232,224,208,0.3)" }}
+              className="text-sm tracking-widest"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 400,
+                color: "rgba(38,34,32,0.5)",
+              }}
             >
               选填 · 深度探索
             </span>
             <div
               className="flex-1 h-px"
-              style={{ background: "rgba(255,255,255,0.06)" }}
+              style={{ background: "rgba(38,34,32,0.06)" }}
             />
           </div>
 
           {/* Q4 盲点 */}
           <div className="mb-12">
             <label
-              className="block text-xs tracking-widest mb-5"
-              style={{ color: "rgba(232,224,208,0.35)" }}
+              className="block text-sm tracking-widest mb-5"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 400,
+                color: "rgba(38,34,32,0.5)",
+              }}
             >
               04 &nbsp;·&nbsp; 我的盲点
             </label>
-            <p className="text-sm mb-4" style={{ color: "rgba(232,224,208,0.55)" }}>
+            <p
+              className="text-sm mb-4"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                color: "rgba(38,34,32,0.72)",
+              }}
+            >
               你有没有观察到，TA 在某些时候会有什么习惯性的反应，可能连 TA 自己都没意识到？
             </p>
             <AmberTextarea
@@ -401,12 +458,22 @@ export default function SubmitPage({ params }: PageProps) {
           {/* Q5 影响力 */}
           <div className="mb-12">
             <label
-              className="block text-xs tracking-widest mb-5"
-              style={{ color: "rgba(232,224,208,0.35)" }}
+              className="block text-sm tracking-widest mb-5"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 400,
+                color: "rgba(38,34,32,0.5)",
+              }}
             >
               05 &nbsp;·&nbsp; 你不知道的影响力
             </label>
-            <p className="text-sm mb-4" style={{ color: "rgba(232,224,208,0.55)" }}>
+            <p
+              className="text-sm mb-4"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                color: "rgba(38,34,32,0.72)",
+              }}
+            >
               认识 TA 之后，有没有什么事是你开始做或者停止做的？哪怕很小的事。
             </p>
             <AmberTextarea
@@ -420,12 +487,22 @@ export default function SubmitPage({ params }: PageProps) {
           {/* Q6 留言 */}
           <div className="mb-2">
             <label
-              className="block text-xs tracking-widest mb-5"
-              style={{ color: "rgba(232,224,208,0.35)" }}
+              className="block text-sm tracking-widest mb-5"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 400,
+                color: "rgba(38,34,32,0.5)",
+              }}
             >
               06 &nbsp;·&nbsp; 一句话留言
             </label>
-            <p className="text-sm mb-4" style={{ color: "rgba(232,224,208,0.55)" }}>
+            <p
+              className="text-sm mb-4"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                color: "rgba(38,34,32,0.72)",
+              }}
+            >
               有没有什么你一直想对 TA 说，但没有合适机会说的话？
             </p>
             <AmberTextarea
@@ -441,18 +518,28 @@ export default function SubmitPage({ params }: PageProps) {
         <section className="mb-16">
           <div className="flex items-center gap-4 mb-10">
             <span
-              className="text-xs tracking-widest"
-              style={{ color: "rgba(232,224,208,0.3)" }}
+              className="text-sm tracking-widest"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 400,
+                color: "rgba(38,34,32,0.5)",
+              }}
             >
               选填 · 视觉记忆
             </span>
             <div
               className="flex-1 h-px"
-              style={{ background: "rgba(255,255,255,0.06)" }}
+              style={{ background: "rgba(38,34,32,0.06)" }}
             />
           </div>
 
-          <p className="text-sm mb-6" style={{ color: "rgba(232,224,208,0.45)" }}>
+          <p
+            className="text-sm mb-6"
+            style={{
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              color: "rgba(38,34,32,0.65)",
+            }}
+          >
             如果你们有一张照片代表你们的关系，可以上传在这里。
           </p>
 
@@ -460,23 +547,23 @@ export default function SubmitPage({ params }: PageProps) {
             className="relative flex flex-col items-center justify-center gap-3 cursor-pointer transition-all duration-700"
             style={{
               height: "140px",
-              border: "1px dashed rgba(212,175,55,0.2)",
+              border: "1px dashed rgba(139,115,85,0.25)",
               borderRadius: "4px",
-              background: "rgba(255,255,255,0.02)",
+              background: "rgba(255,255,255,0.50)",
               backdropFilter: "blur(8px)",
             }}
             onClick={() => fileInputRef.current?.click()}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLDivElement).style.borderColor =
-                "rgba(212,175,55,0.4)";
+                "rgba(139,115,85,0.45)";
               (e.currentTarget as HTMLDivElement).style.background =
-                "rgba(212,175,55,0.03)";
+                "rgba(139,115,85,0.04)";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLDivElement).style.borderColor =
-                "rgba(212,175,55,0.2)";
+                "rgba(139,115,85,0.25)";
               (e.currentTarget as HTMLDivElement).style.background =
-                "rgba(255,255,255,0.02)";
+                "rgba(255,255,255,0.50)";
             }}
           >
             <input
@@ -503,12 +590,15 @@ export default function SubmitPage({ params }: PageProps) {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-xs" style={{ color: "rgba(212,175,55,0.7)" }}>
+                <span
+                  className="text-xs"
+                  style={{ color: "rgba(139,115,85,0.7)" }}
+                >
                   {photoName}
                 </span>
                 <button
                   className="text-xs"
-                  style={{ color: "rgba(232,224,208,0.25)" }}
+                  style={{ color: "rgba(38,34,32,0.25)" }}
                   onClick={(e) => {
                     e.stopPropagation();
                     setPhotoFile(null);
@@ -528,19 +618,19 @@ export default function SubmitPage({ params }: PageProps) {
                     width="16"
                     height="12"
                     rx="1.5"
-                    stroke="rgba(212,175,55,0.35)"
+                    stroke="rgba(139,115,85,0.35)"
                     strokeWidth="1.2"
                   />
                   <circle
                     cx="8"
                     cy="9"
                     r="1.5"
-                    stroke="rgba(212,175,55,0.35)"
+                    stroke="rgba(139,115,85,0.35)"
                     strokeWidth="1.2"
                   />
                   <path
                     d="M3 14l4-3 3 3 3-4 4 4"
-                    stroke="rgba(212,175,55,0.35)"
+                    stroke="rgba(139,115,85,0.35)"
                     strokeWidth="1.2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -548,7 +638,10 @@ export default function SubmitPage({ params }: PageProps) {
                 </svg>
                 <span
                   className="text-xs tracking-wider"
-                  style={{ color: "rgba(232,224,208,0.25)" }}
+                  style={{
+                    fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                    color: "rgba(38,34,32,0.45)",
+                  }}
                 >
                   点击上传照片
                 </span>
@@ -561,15 +654,20 @@ export default function SubmitPage({ params }: PageProps) {
         <section>
           <div
             className="h-px mb-10"
-            style={{ background: "rgba(255,255,255,0.06)" }}
+            style={{ background: "rgba(38,34,32,0.06)" }}
           />
 
           <div className="mb-8">
             <label
-              className="block text-xs tracking-widest mb-4"
-              style={{ color: "rgba(232,224,208,0.45)" }}
+              className="block text-sm tracking-widest mb-4"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 500,
+                color: "rgba(38,34,32,0.65)",
+              }}
             >
-              你的署名 <span style={{ color: AMBER }}>*</span>
+              你的署名{" "}
+              <span style={{ color: AMBER }}>*</span>
             </label>
             <AmberInput
               placeholder="你希望 TA 如何称呼你"
@@ -581,8 +679,11 @@ export default function SubmitPage({ params }: PageProps) {
           {/* 错误提示 */}
           {status === "error" && errorMsg && (
             <p
-              className="mb-4 text-xs leading-relaxed"
-              style={{ color: "rgba(239,68,68,0.8)" }}
+              className="mb-4 text-sm leading-relaxed"
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                color: "rgba(180,60,50,0.8)",
+              }}
             >
               {errorMsg}
             </p>
@@ -591,15 +692,19 @@ export default function SubmitPage({ params }: PageProps) {
           <button
             onClick={handleSubmit}
             disabled={!isReady || status === "loading"}
-            className="w-full py-4 text-sm tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-3"
+            className="w-full py-4 text-base tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-3"
             style={{
-              fontFamily: "var(--font-geist-sans), sans-serif",
-              color: isReady ? "rgba(212,175,55,0.9)" : "rgba(212,175,55,0.3)",
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              color: isReady
+                ? "rgba(139,115,85,0.9)"
+                : "rgba(139,115,85,0.3)",
               border: `1px solid ${
-                isReady ? AMBER_BORDER : "rgba(255,255,255,0.06)"
+                isReady ? AMBER_BORDER : "rgba(38,34,32,0.08)"
               }`,
               borderRadius: "2px",
-              background: isReady ? "rgba(255,255,255,0.03)" : "transparent",
+              background: isReady
+                ? "rgba(255,255,255,0.55)"
+                : "transparent",
               backdropFilter: "blur(12px)",
               cursor: isReady ? "pointer" : "not-allowed",
               letterSpacing: "0.2em",
@@ -621,7 +726,10 @@ export default function SubmitPage({ params }: PageProps) {
           {!isReady && (
             <p
               className="mt-4 text-center text-xs"
-              style={{ color: "rgba(232,224,208,0.2)" }}
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                color: "rgba(38,34,32,0.45)",
+              }}
             >
               请完成必填项后方可提交
             </p>

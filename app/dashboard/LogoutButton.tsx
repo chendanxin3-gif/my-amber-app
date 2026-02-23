@@ -12,11 +12,11 @@ export default function LogoutButton() {
   return (
     <button
       onClick={handleLogout}
-      className="mt-1 text-xs tracking-widest transition-all duration-300"
+      className="mt-1 text-sm tracking-widest transition-all duration-300"
       style={{
         fontFamily: "var(--font-noto-sans-sc), sans-serif",
-        fontWeight: 300,
-        color: "rgba(38,34,32,0.22)",
+        fontWeight: 400,
+        color: "rgba(38,34,32,0.45)",
         background: "none",
         cursor: "pointer",
         letterSpacing: "0.18em",

@@ -43,7 +43,7 @@ function AmberTextarea({
         transition: "border-bottom-color 600ms ease-out",
         caretColor: GOLD,
       }}
-      className="placeholder:text-black/20 w-full"
+      className="placeholder:text-black/35 w-full"
     />
   );
 }
@@ -81,7 +81,7 @@ function AmberInput({
         transition: "border-bottom-color 600ms ease-out",
         caretColor: GOLD,
       }}
-      className="placeholder:text-black/20 w-full"
+      className="placeholder:text-black/35 w-full"
     />
   );
 }
@@ -124,11 +124,11 @@ export function ProfileForm({
       <div className="flex flex-col gap-8">
         <div>
           <label
-            className="block text-xs tracking-widest mb-4"
+            className="block text-sm tracking-widest mb-4"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 300,
-              color: "rgba(38,34,32,0.4)",
+              fontWeight: 400,
+              color: "rgba(38,34,32,0.65)",
               letterSpacing: "0.18em",
             }}
           >
@@ -142,11 +142,11 @@ export function ProfileForm({
         </div>
         <div>
           <label
-            className="block text-xs tracking-widest mb-4"
+            className="block text-sm tracking-widest mb-4"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 300,
-              color: "rgba(38,34,32,0.4)",
+              fontWeight: 400,
+              color: "rgba(38,34,32,0.65)",
               letterSpacing: "0.18em",
             }}
           >
@@ -159,11 +159,11 @@ export function ProfileForm({
             rows={5}
           />
           <p
-            className="mt-3 text-xs leading-relaxed"
+            className="mt-3 text-sm leading-relaxed"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 300,
-              color: "rgba(38,34,32,0.25)",
+              fontWeight: 400,
+              color: "rgba(38,34,32,0.45)",
             }}
           >
             这段引言将展示在你的专属填写页，为受邀者营造情绪氛围。
@@ -174,10 +174,10 @@ export function ProfileForm({
       <button
         onClick={handleSave}
         disabled={saveStatus === "saving"}
-        className="self-start px-8 py-3 text-xs tracking-widest transition-all duration-700 ease-out flex items-center gap-2"
+        className="self-start px-8 py-3 text-sm tracking-widest transition-all duration-700 ease-out flex items-center gap-2"
         style={{
           fontFamily: "var(--font-noto-sans-sc), sans-serif",
-          fontWeight: 300,
+          fontWeight: 400,
           color:
             saveStatus === "saved"
               ? "rgba(139,115,85,0.9)"
@@ -248,8 +248,8 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
         className="text-sm leading-loose text-center max-w-sm"
         style={{
           fontFamily: "var(--font-noto-sans-sc), sans-serif",
-          fontWeight: 300,
-              color: "rgba(37,45,16,0.4)",
+          fontWeight: 400,
+              color: "rgba(38,34,32,0.65)",
               letterSpacing: "0.04em",
         }}
       >
@@ -273,20 +273,20 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
             value={shareUrl}
             className="flex-1 bg-transparent text-xs outline-none"
             style={{
-              color: "rgba(38,34,32,0.4)",
+              color: "rgba(38,34,32,0.6)",
               fontFamily: "var(--font-geist-mono), monospace",
               cursor: "text",
             }}
           />
           <button
             onClick={handleCopy}
-            className="text-xs tracking-widest transition-all duration-500 shrink-0"
+            className="text-sm tracking-widest transition-all duration-500 shrink-0"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 300,
+              fontWeight: 400,
               color: copied
                 ? "rgba(139,115,85,0.9)"
-                : "rgba(139,115,85,0.6)",
+                : "rgba(139,115,85,0.75)",
               background: "none",
               cursor: "pointer",
               letterSpacing: "0.12em",

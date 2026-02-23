@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import BgmPlayer from "@/app/components/BgmPlayer";
+import InkBackground from "@/app/components/InkBackground";
 
 interface Props {
   profileId: string;
@@ -20,24 +21,21 @@ export default function AmberLandingClient({
 
   const intro = customIntro.trim()
     ? customIntro
-    : "在这段相遇的时光里，我们共同构建了一个短暂却真实的场域。";
+    : "日本茶道讲「一期一会」，意味着此时此刻的相遇、这杯茶、坐在这里的人，一生仅有一次，绝不重来。";
 
   return (
     <main
       className="relative h-screen w-full overflow-hidden flex items-center justify-center cursor-pointer select-none"
-      style={{ background: "#0a0a0a" }}
+      style={{ background: "#F4F1EE" }}
       onClick={() => {
         if (!actTwo) setActTwo(true);
       }}
     >
-      {/* 背景微光 */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 50% 55%, rgba(212,175,55,0.05) 0%, transparent 70%)",
-        }}
-      />
+      {/* 水墨晕染动态背景 */}
+      <InkBackground />
+
+      {/* 背景音乐控制器 */}
+      <BgmPlayer />
 
       {/* ── 第一幕：情绪铺陈 ── */}
       <div
@@ -46,39 +44,50 @@ export default function AmberLandingClient({
           opacity: actTwo ? 0 : 1,
           transition: "opacity 1000ms ease-out",
           pointerEvents: actTwo ? "none" : "auto",
+          zIndex: 1,
         }}
       >
         <div className="max-w-2xl w-full">
           <p
             className="leading-loose text-base md:text-lg mb-8"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "rgba(232,224,208,0.75)",
-              letterSpacing: "0.02em",
+              fontFamily: "var(--font-noto-serif-sc), serif",
+              color: "rgba(38,34,32,0.82)",
+              letterSpacing: "0.04em",
             }}
           >
             我是{" "}
-            <span style={{ color: "#e8e0d0" }}>{fullName}</span>。
+            <span style={{ color: "#262220", fontWeight: 400 }}>{fullName}</span>。
           </p>
           <p
             className="leading-loose text-base md:text-lg mb-8"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "rgba(232,224,208,0.75)",
-              letterSpacing: "0.02em",
+              fontFamily: "var(--font-noto-serif-sc), serif",
+              color: "rgba(38,34,32,0.82)",
+              letterSpacing: "0.04em",
             }}
           >
             {intro}
           </p>
           <p
-            className="leading-loose text-base md:text-lg"
+            className="leading-loose text-base md:text-lg mb-8"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "rgba(232,224,208,0.75)",
-              letterSpacing: "0.02em",
+              fontFamily: "var(--font-noto-serif-sc), serif",
+              color: "rgba(38,34,32,0.82)",
+              letterSpacing: "0.04em",
             }}
           >
-            人是无法真正看清自己的。我想借你的眼睛，凝固那个我未曾察觉的自己……
+            在巴厘岛这 8 天的日夜、屏幕前的 Bug 与岛屿的晚风里，我们共同构建了一个短暂却真实的场域。我知道，那些固有的人设和职业标签在这里是被消解的。
+          </p>
+          <p
+            className="leading-loose text-base md:text-lg"
+            style={{
+              fontFamily: "var(--font-noto-serif-sc), serif",
+              color: "rgba(38,34,32,0.82)",
+              letterSpacing: "0.04em",
+            }}
+          >
+            在即将各自退回原有轨道、结束这场人生实验的前夕，我想请你一起封存属于我们的记忆：借你的眼睛，凝固那个我未曾察觉的自己……
           </p>
         </div>
 
@@ -89,7 +98,7 @@ export default function AmberLandingClient({
             height="20"
             viewBox="0 0 20 20"
             fill="none"
-            style={{ color: "rgba(212,175,55,0.5)" }}
+            style={{ color: "rgba(139,115,85,0.5)" }}
           >
             <path
               d="M10 3v14M10 17l-5-5M10 17l5-5"
@@ -100,19 +109,16 @@ export default function AmberLandingClient({
             />
           </svg>
           <span
-            className="text-xs tracking-widest"
+            className="text-sm tracking-widest"
             style={{
-              color: "rgba(212,175,55,0.45)",
-              fontFamily: "var(--font-geist-sans), sans-serif",
+              color: "rgba(139,115,85,0.65)",
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
             }}
           >
             点击水面，继续
           </span>
         </div>
       </div>
-
-      {/* 背景音乐控制器 */}
-      <BgmPlayer />
 
       {/* ── 第二幕：规则说明 ── */}
       <div
@@ -121,6 +127,7 @@ export default function AmberLandingClient({
           opacity: actTwo ? 1 : 0,
           transition: "opacity 1000ms ease-out",
           pointerEvents: actTwo ? "auto" : "none",
+          zIndex: 1,
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -128,12 +135,12 @@ export default function AmberLandingClient({
           <h1
             className="text-2xl md:text-4xl tracking-widest mb-10"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "#e8e0d0",
-              letterSpacing: "0.15em",
+              fontFamily: '"PingFangShiGuang", serif',
+              color: "rgba(38,34,32,0.85)",
+              letterSpacing: "0.28em",
             }}
           >
-            万物见我 · 一期一会
+            万物见我·一期一会
           </h1>
 
           {/* 规则说明列表 */}
@@ -145,16 +152,16 @@ export default function AmberLandingClient({
             ].map((text, index) => (
               <div key={index} className="flex items-start gap-4 text-left">
                 <span
-                  className="shrink-0 text-xs mt-1"
-                  style={{ color: "rgba(212,175,55,0.4)" }}
+                  className="shrink-0 text-sm mt-1"
+                  style={{ color: "rgba(139,115,85,0.6)" }}
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <p
                   className="text-sm leading-loose"
                   style={{
-                    fontFamily: "var(--font-geist-sans), sans-serif",
-                    color: "rgba(232,224,208,0.6)",
+                    fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                    color: "rgba(38,34,32,0.75)",
                   }}
                 >
                   {text}
@@ -168,29 +175,28 @@ export default function AmberLandingClient({
             onClick={() => router.push(`/amber/${profileId}/submit`)}
             className="px-12 py-4 text-sm tracking-widest transition-all duration-700 ease-out"
             style={{
-              fontFamily: "var(--font-geist-sans), sans-serif",
-              color: "rgba(212,175,55,0.9)",
-              border: "1px solid rgba(212,175,55,0.35)",
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              color: "rgba(139,115,85,0.9)",
+              border: "1px solid rgba(139,115,85,0.3)",
               borderRadius: "2px",
-              background: "rgba(255,255,255,0.03)",
+              background: "rgba(255,255,255,0.55)",
               backdropFilter: "blur(12px)",
               WebkitBackdropFilter: "blur(12px)",
               letterSpacing: "0.2em",
-              boxShadow:
-                "0 0 24px rgba(212,175,55,0.06) inset, 0 0 40px rgba(212,175,55,0.04)",
+              boxShadow: "0 2px 24px rgba(139,115,85,0.06)",
               cursor: "pointer",
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLButtonElement).style.background =
-                "rgba(212,175,55,0.08)";
+                "rgba(139,115,85,0.08)";
               (e.currentTarget as HTMLButtonElement).style.borderColor =
-                "rgba(212,175,55,0.6)";
+                "rgba(139,115,85,0.5)";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLButtonElement).style.background =
-                "rgba(255,255,255,0.03)";
+                "rgba(255,255,255,0.55)";
               (e.currentTarget as HTMLButtonElement).style.borderColor =
-                "rgba(212,175,55,0.35)";
+                "rgba(139,115,85,0.3)";
             }}
           >
             封存这枚琥珀

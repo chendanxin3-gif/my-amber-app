@@ -61,14 +61,14 @@ export default async function DashboardPage() {
               <h1
                 className="tracking-widest"
                 style={{
-                  fontFamily: "var(--font-noto-serif-sc), serif",
+                  fontFamily: '"PingFangShiGuang", serif',
                   fontWeight: 300,
                   fontSize: "clamp(1.4rem, 3.5vw, 2.4rem)",
                   color: "rgba(38,34,32,0.82)",
-                  letterSpacing: "0.2em",
+                  letterSpacing: "0.28em",
                 }}
               >
-                萬物見我
+                万物见我
               </h1>
             </div>
             <LogoutButton />
@@ -95,7 +95,7 @@ export default async function DashboardPage() {
               letterSpacing: "0.2em",
             }}
           >
-            萬物見我 · 一期一會 · Amber of Relationships
+            万物见我 · 一期一会 · Amber of Relationships
           </p>
         </footer>
       </div>

@@ -39,14 +39,14 @@ function AmberInput({
         borderBottom: `1px solid ${focused ? GOLD : "rgba(38,34,32,0.15)"}`,
         color: "#262220",
         fontFamily: "var(--font-noto-sans-sc), sans-serif",
-        fontSize: "0.9rem",
+        fontSize: "1rem",
         lineHeight: "1.9",
         padding: "8px 0",
         outline: "none",
         transition: "border-bottom-color 600ms ease-out",
         caretColor: GOLD,
       }}
-      className="placeholder:text-black/20"
+      className="placeholder:text-black/35"
     />
   );
 }
@@ -168,7 +168,7 @@ export default function LandingPage() {
               letterSpacing: "0.04em",
             }}
           >
-            日本茶道里讲「一期一会」——此刻的相遇，一生仅有一次，绝不重来。
+            日本茶道讲「一期一会」——此刻的相遇、这杯茶、坐在这里的人，一生仅有一次，绝不重来。
           </p>
 
           <p
@@ -181,7 +181,7 @@ export default function LandingPage() {
               letterSpacing: "0.04em",
             }}
           >
-            告别人情世故的点赞，收集只属于你的关系印记。生成专属链接，邀请真正了解你的人，用他们最真实的目光，为你凝固一枚永恒的关系琥珀。
+            告别人情世故的点赞，收集只属于你的关系印记。生成专属链接，邀请与你一期一会的人，用他们的目光，为你凝固一枚永恒的关系琥珀。
           </p>
 
           <p
@@ -246,14 +246,14 @@ export default function LandingPage() {
         <h1
           className="text-center tracking-widest mb-12"
           style={{
-            fontFamily: "var(--font-noto-serif-sc), serif",
+            fontFamily: '"PingFangShiGuang", serif',
             fontWeight: 300,
             fontSize: "clamp(1.5rem, 4vw, 2.8rem)",
             color: "rgba(38,34,32,0.82)",
-            letterSpacing: "0.22em",
+            letterSpacing: "0.28em",
           }}
         >
-          萬物見我・一期一會
+          万物见我·一期一会
         </h1>
 
         {/* 登录注册卡片 */}
@@ -281,14 +281,14 @@ export default function LandingPage() {
                   setErrorMsg("");
                   setSuccessMsg("");
                 }}
-                className="text-xs tracking-widest transition-all duration-500"
+                className="text-sm tracking-widest transition-all duration-500"
                 style={{
                   fontFamily: "var(--font-noto-sans-sc), sans-serif",
-                  fontWeight: 300,
+                  fontWeight: authMode === mode ? 500 : 400,
                   color:
                     authMode === mode
                       ? "rgba(139,115,85,0.9)"
-                      : "rgba(38,34,32,0.3)",
+                      : "rgba(38,34,32,0.55)",
                   borderBottom:
                     authMode === mode
                       ? `1px solid rgba(139,115,85,0.5)`
@@ -323,7 +323,7 @@ export default function LandingPage() {
           {/* 错误 / 成功提示 */}
           {errorMsg && (
             <p
-              className="mb-4 text-xs leading-relaxed"
+              className="mb-4 text-sm leading-relaxed"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(180,60,50,0.8)",
@@ -334,7 +334,7 @@ export default function LandingPage() {
           )}
           {successMsg && (
             <p
-              className="mb-4 text-xs leading-relaxed"
+              className="mb-4 text-sm leading-relaxed"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(139,115,85,0.9)",
@@ -348,10 +348,10 @@ export default function LandingPage() {
           <button
             onClick={handleAuth}
             disabled={authStatus === "loading"}
-            className="w-full py-3 text-xs tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
+            className="w-full py-3 text-sm tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 300,
+              fontWeight: 400,
               color: "rgba(139,115,85,0.9)",
               border: `1px solid ${GOLD_BORDER}`,
               borderRadius: "1px",
@@ -385,8 +385,8 @@ export default function LandingPage() {
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 300,
-                fontSize: "0.7rem",
-                color: "rgba(38,34,32,0.25)",
+                fontSize: "0.8rem",
+                color: "rgba(38,34,32,0.4)",
               }}
             >
               或
@@ -400,11 +400,11 @@ export default function LandingPage() {
           {/* GitHub OAuth */}
           <button
             onClick={handleGithubLogin}
-            className="w-full py-3 text-xs tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
+            className="w-full py-3 text-sm tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 300,
-              color: "rgba(38,34,32,0.35)",
+              fontWeight: 400,
+              color: "rgba(38,34,32,0.6)",
               border: "1px solid rgba(38,34,32,0.1)",
               borderRadius: "1px",
               background: "transparent",

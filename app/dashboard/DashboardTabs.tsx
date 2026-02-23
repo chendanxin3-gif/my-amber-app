@@ -58,13 +58,13 @@ export default function DashboardTabs({
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className="relative pb-4 text-xs tracking-widest transition-all duration-500"
+              className="relative pb-4 text-sm tracking-widest transition-all duration-500"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
-                fontWeight: 300,
+                fontWeight: isActive ? 500 : 400,
                 color: isActive
-                  ? "rgba(139,115,85,0.9)"
-                  : "rgba(38,34,32,0.3)",
+                  ? "rgba(139,115,85,0.95)"
+                  : "rgba(38,34,32,0.5)",
                 background: "none",
                 cursor: "pointer",
                 letterSpacing: "0.2em",
@@ -90,11 +90,11 @@ export default function DashboardTabs({
         <div key="ambers" className="animate-fade-in">
           <div className="px-6 md:px-16 pt-10 pb-2">
             <p
-              className="text-xs tracking-widest"
+              className="text-sm tracking-widest"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
-                fontWeight: 300,
-                color: "rgba(38,34,32,0.3)",
+                fontWeight: 400,
+                color: "rgba(38,34,32,0.55)",
                 letterSpacing: "0.18em",
               }}
             >
@@ -133,11 +133,11 @@ export default function DashboardTabs({
                 定义自我
               </h2>
               <p
-                className="text-xs leading-loose"
+                className="text-sm leading-loose"
                 style={{
                   fontFamily: "var(--font-noto-sans-sc), sans-serif",
-                  fontWeight: 300,
-                  color: "rgba(38,34,32,0.35)",
+                  fontWeight: 400,
+                  color: "rgba(38,34,32,0.55)",
                   letterSpacing: "0.06em",
                 }}
               >
@@ -170,11 +170,11 @@ export default function DashboardTabs({
                 获取信物
               </h2>
               <p
-                className="text-xs leading-loose"
+                className="text-sm leading-loose"
                 style={{
                   fontFamily: "var(--font-noto-sans-sc), sans-serif",
-                  fontWeight: 300,
-                  color: "rgba(38,34,32,0.35)",
+                  fontWeight: 400,
+                  color: "rgba(38,34,32,0.55)",
                   letterSpacing: "0.06em",
                 }}
               >
