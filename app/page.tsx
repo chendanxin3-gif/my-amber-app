@@ -39,7 +39,7 @@ function AmberInput({
         borderBottom: `1px solid ${focused ? GOLD : "rgba(38,34,32,0.15)"}`,
         color: "#262220",
         fontFamily: "var(--font-noto-sans-sc), sans-serif",
-        fontSize: "1rem",
+        fontSize: "1.25rem",
         lineHeight: "1.9",
         padding: "8px 0",
         outline: "none",
@@ -281,10 +281,10 @@ export default function LandingPage() {
                   setErrorMsg("");
                   setSuccessMsg("");
                 }}
-                className="text-sm tracking-widest transition-all duration-500"
+                className="text-lg tracking-widest transition-all duration-500"
                 style={{
                   fontFamily: "var(--font-noto-sans-sc), sans-serif",
-                  fontWeight: authMode === mode ? 500 : 400,
+                  fontWeight: 600,
                   color:
                     authMode === mode
                       ? "rgba(139,115,85,0.9)"
@@ -323,7 +323,7 @@ export default function LandingPage() {
           {/* 错误 / 成功提示 */}
           {errorMsg && (
             <p
-              className="mb-4 text-sm leading-relaxed"
+              className="mb-4 text-lg leading-relaxed"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(180,60,50,0.8)",
@@ -334,7 +334,7 @@ export default function LandingPage() {
           )}
           {successMsg && (
             <p
-              className="mb-4 text-sm leading-relaxed"
+              className="mb-4 text-lg leading-relaxed"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(139,115,85,0.9)",
@@ -348,10 +348,10 @@ export default function LandingPage() {
           <button
             onClick={handleAuth}
             disabled={authStatus === "loading"}
-            className="w-full py-3 text-sm tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
+            className="w-full py-3 text-lg tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 400,
+              fontWeight: 600,
               color: "rgba(139,115,85,0.9)",
               border: `1px solid ${GOLD_BORDER}`,
               borderRadius: "1px",
@@ -385,7 +385,7 @@ export default function LandingPage() {
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 300,
-                fontSize: "0.8rem",
+                fontSize: "1rem",
                 color: "rgba(38,34,32,0.4)",
               }}
             >
@@ -400,10 +400,10 @@ export default function LandingPage() {
           {/* GitHub OAuth */}
           <button
             onClick={handleGithubLogin}
-            className="w-full py-3 text-sm tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
+            className="w-full py-3 text-lg tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 400,
+              fontWeight: 600,
               color: "rgba(38,34,32,0.6)",
               border: "1px solid rgba(38,34,32,0.1)",
               borderRadius: "1px",

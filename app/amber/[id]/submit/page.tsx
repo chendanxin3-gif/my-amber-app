@@ -14,7 +14,7 @@ const inputBase: React.CSSProperties = {
   border: "none",
   color: "#262220",
   fontFamily: "var(--font-noto-sans-sc), sans-serif",
-  fontSize: "0.95rem",
+  fontSize: "1.15rem",
   lineHeight: "1.9",
   padding: "8px 0",
   outline: "none",
@@ -72,7 +72,7 @@ function AmberInput({
       onBlur={() => setFocused(false)}
       style={{
         ...inputBase,
-        fontSize: "0.9rem",
+        fontSize: "1.15rem",
         borderBottom: `1px solid ${focused ? AMBER : "rgba(38,34,32,0.12)"}`,
         transition: "border-bottom-color 600ms ease-out",
       }}
@@ -209,7 +209,7 @@ export default function SubmitPage({ params }: PageProps) {
           </h2>
 
           <p
-            className="text-sm leading-loose mb-10"
+            className="text-lg leading-loose mb-10"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               color: "rgba(38,34,32,0.7)",
@@ -228,7 +228,7 @@ export default function SubmitPage({ params }: PageProps) {
 
           {/* 病毒裂变区 */}
           <p
-            className="text-sm leading-relaxed mb-6"
+            className="text-lg leading-relaxed mb-6"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               color: "rgba(38,34,32,0.55)",
@@ -239,10 +239,10 @@ export default function SubmitPage({ params }: PageProps) {
 
           <Link
             href="/"
-            className="inline-block px-8 py-3 text-sm tracking-widest transition-all duration-700 ease-out"
+            className="inline-block px-8 py-3 text-lg tracking-widest transition-all duration-700 ease-out"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 400,
+              fontWeight: 600,
               color: "rgba(139,115,85,0.9)",
               border: `1px solid ${AMBER_BORDER}`,
               borderRadius: "2px",
@@ -266,7 +266,7 @@ export default function SubmitPage({ params }: PageProps) {
       <header className="relative px-6 md:px-16 pt-10 pb-2" style={{ zIndex: 1 }}>
         <Link
           href={`/amber/${profileId}`}
-          className="text-sm tracking-widest"
+          className="text-lg tracking-widest font-semibold"
           style={{
             color: "rgba(139,115,85,0.65)",
             fontFamily: "var(--font-noto-sans-sc), sans-serif",
@@ -290,7 +290,7 @@ export default function SubmitPage({ params }: PageProps) {
             封存你的记忆琥珀
           </h1>
           <p
-            className="text-sm leading-relaxed"
+            className="text-lg leading-relaxed"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               color: "rgba(38,34,32,0.6)",
@@ -304,7 +304,7 @@ export default function SubmitPage({ params }: PageProps) {
         <section className="mb-16">
           <div className="flex items-center gap-4 mb-10">
             <span
-              className="text-sm tracking-widest"
+              className="text-lg tracking-widest"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 500,
@@ -322,7 +322,7 @@ export default function SubmitPage({ params }: PageProps) {
           {/* Q1 三个词 */}
           <div className="mb-12">
             <label
-              className="block text-sm tracking-widest mb-5"
+              className="block text-lg tracking-widest mb-5"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 500,
@@ -332,7 +332,7 @@ export default function SubmitPage({ params }: PageProps) {
               01 &nbsp;·&nbsp; 你眼中的 TA
             </label>
             <p
-              className="text-sm mb-4"
+              className="text-lg mb-4"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(38,34,32,0.82)",
@@ -351,7 +351,7 @@ export default function SubmitPage({ params }: PageProps) {
           {/* Q2 印象变迁 */}
           <div className="mb-12">
             <label
-              className="block text-sm tracking-widest mb-5"
+              className="block text-lg tracking-widest mb-5"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 500,
@@ -361,7 +361,7 @@ export default function SubmitPage({ params }: PageProps) {
               02 &nbsp;·&nbsp; 印象变迁
             </label>
             <p
-              className="text-sm mb-4"
+              className="text-lg mb-4"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(38,34,32,0.82)",
@@ -380,7 +380,7 @@ export default function SubmitPage({ params }: PageProps) {
           {/* Q3 天赋感知 */}
           <div className="mb-2">
             <label
-              className="block text-sm tracking-widest mb-5"
+              className="block text-lg tracking-widest mb-5"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 500,
@@ -390,7 +390,7 @@ export default function SubmitPage({ params }: PageProps) {
               03 &nbsp;·&nbsp; 天赋感知
             </label>
             <p
-              className="text-sm mb-4"
+              className="text-lg mb-4"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(38,34,32,0.82)",
@@ -411,7 +411,7 @@ export default function SubmitPage({ params }: PageProps) {
         <section className="mb-16">
           <div className="flex items-center gap-4 mb-10">
             <span
-              className="text-sm tracking-widest"
+              className="text-lg tracking-widest"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 400,
@@ -429,7 +429,7 @@ export default function SubmitPage({ params }: PageProps) {
           {/* Q4 盲点 */}
           <div className="mb-12">
             <label
-              className="block text-sm tracking-widest mb-5"
+              className="block text-lg tracking-widest mb-5"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 400,
@@ -439,7 +439,7 @@ export default function SubmitPage({ params }: PageProps) {
               04 &nbsp;·&nbsp; 我的盲点
             </label>
             <p
-              className="text-sm mb-4"
+              className="text-lg mb-4"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(38,34,32,0.72)",
@@ -458,7 +458,7 @@ export default function SubmitPage({ params }: PageProps) {
           {/* Q5 影响力 */}
           <div className="mb-12">
             <label
-              className="block text-sm tracking-widest mb-5"
+              className="block text-lg tracking-widest mb-5"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 400,
@@ -468,7 +468,7 @@ export default function SubmitPage({ params }: PageProps) {
               05 &nbsp;·&nbsp; 你不知道的影响力
             </label>
             <p
-              className="text-sm mb-4"
+              className="text-lg mb-4"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(38,34,32,0.72)",
@@ -487,7 +487,7 @@ export default function SubmitPage({ params }: PageProps) {
           {/* Q6 留言 */}
           <div className="mb-2">
             <label
-              className="block text-sm tracking-widest mb-5"
+              className="block text-lg tracking-widest mb-5"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 400,
@@ -497,7 +497,7 @@ export default function SubmitPage({ params }: PageProps) {
               06 &nbsp;·&nbsp; 一句话留言
             </label>
             <p
-              className="text-sm mb-4"
+              className="text-lg mb-4"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(38,34,32,0.72)",
@@ -518,7 +518,7 @@ export default function SubmitPage({ params }: PageProps) {
         <section className="mb-16">
           <div className="flex items-center gap-4 mb-10">
             <span
-              className="text-sm tracking-widest"
+              className="text-lg tracking-widest"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 400,
@@ -534,7 +534,7 @@ export default function SubmitPage({ params }: PageProps) {
           </div>
 
           <p
-            className="text-sm mb-6"
+            className="text-lg mb-6"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               color: "rgba(38,34,32,0.65)",
@@ -637,7 +637,7 @@ export default function SubmitPage({ params }: PageProps) {
                   />
                 </svg>
                 <span
-                  className="text-xs tracking-wider"
+                  className="text-base tracking-wider"
                   style={{
                     fontFamily: "var(--font-noto-sans-sc), sans-serif",
                     color: "rgba(38,34,32,0.45)",
@@ -659,7 +659,7 @@ export default function SubmitPage({ params }: PageProps) {
 
           <div className="mb-8">
             <label
-              className="block text-sm tracking-widest mb-4"
+              className="block text-lg tracking-widest mb-4"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 500,
@@ -679,7 +679,7 @@ export default function SubmitPage({ params }: PageProps) {
           {/* 错误提示 */}
           {status === "error" && errorMsg && (
             <p
-              className="mb-4 text-sm leading-relaxed"
+              className="mb-4 text-lg leading-relaxed"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(180,60,50,0.8)",
@@ -692,9 +692,10 @@ export default function SubmitPage({ params }: PageProps) {
           <button
             onClick={handleSubmit}
             disabled={!isReady || status === "loading"}
-            className="w-full py-4 text-base tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-3"
+            className="w-full py-4 text-xl tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-3"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 600,
               color: isReady
                 ? "rgba(139,115,85,0.9)"
                 : "rgba(139,115,85,0.3)",
@@ -725,7 +726,7 @@ export default function SubmitPage({ params }: PageProps) {
 
           {!isReady && (
             <p
-              className="mt-4 text-center text-xs"
+              className="mt-4 text-center text-base"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 color: "rgba(38,34,32,0.45)",

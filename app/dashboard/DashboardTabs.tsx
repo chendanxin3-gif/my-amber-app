@@ -58,10 +58,10 @@ export default function DashboardTabs({
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className="relative pb-4 text-sm tracking-widest transition-all duration-500"
+              className="relative pb-4 text-lg tracking-widest transition-all duration-500"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
-                fontWeight: isActive ? 500 : 400,
+                fontWeight: 600,
                 color: isActive
                   ? "rgba(139,115,85,0.95)"
                   : "rgba(38,34,32,0.5)",
@@ -90,7 +90,7 @@ export default function DashboardTabs({
         <div key="ambers" className="animate-fade-in">
           <div className="px-6 md:px-16 pt-10 pb-2">
             <p
-              className="text-sm tracking-widest"
+              className="text-lg tracking-widest"
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 400,
@@ -133,7 +133,7 @@ export default function DashboardTabs({
                 定义自我
               </h2>
               <p
-                className="text-sm leading-loose"
+                className="text-lg leading-loose"
                 style={{
                   fontFamily: "var(--font-noto-sans-sc), sans-serif",
                   fontWeight: 400,
@@ -170,7 +170,7 @@ export default function DashboardTabs({
                 获取信物
               </h2>
               <p
-                className="text-sm leading-loose"
+                className="text-lg leading-loose"
                 style={{
                   fontFamily: "var(--font-noto-sans-sc), sans-serif",
                   fontWeight: 400,

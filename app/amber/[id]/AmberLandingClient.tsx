@@ -49,7 +49,7 @@ export default function AmberLandingClient({
       >
         <div className="max-w-2xl w-full">
           <p
-            className="leading-loose text-base md:text-lg mb-8"
+            className="leading-loose text-lg md:text-xl mb-8"
             style={{
               fontFamily: "var(--font-noto-serif-sc), serif",
               color: "rgba(38,34,32,0.82)",
@@ -60,7 +60,7 @@ export default function AmberLandingClient({
             <span style={{ color: "#262220", fontWeight: 400 }}>{fullName}</span>。
           </p>
           <p
-            className="leading-loose text-base md:text-lg mb-8"
+            className="leading-loose text-lg md:text-xl mb-8"
             style={{
               fontFamily: "var(--font-noto-serif-sc), serif",
               color: "rgba(38,34,32,0.82)",
@@ -70,7 +70,7 @@ export default function AmberLandingClient({
             {intro}
           </p>
           <p
-            className="leading-loose text-base md:text-lg mb-8"
+            className="leading-loose text-lg md:text-xl mb-8"
             style={{
               fontFamily: "var(--font-noto-serif-sc), serif",
               color: "rgba(38,34,32,0.82)",
@@ -80,7 +80,7 @@ export default function AmberLandingClient({
             在巴厘岛这 8 天的日夜、屏幕前的 Bug 与岛屿的晚风里，我们共同构建了一个短暂却真实的场域。我知道，那些固有的人设和职业标签在这里是被消解的。
           </p>
           <p
-            className="leading-loose text-base md:text-lg"
+            className="leading-loose text-lg md:text-xl"
             style={{
               fontFamily: "var(--font-noto-serif-sc), serif",
               color: "rgba(38,34,32,0.82)",
@@ -109,7 +109,7 @@ export default function AmberLandingClient({
             />
           </svg>
           <span
-            className="text-sm tracking-widest"
+            className="text-lg tracking-widest"
             style={{
               color: "rgba(139,115,85,0.65)",
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
@@ -152,13 +152,13 @@ export default function AmberLandingClient({
             ].map((text, index) => (
               <div key={index} className="flex items-start gap-4 text-left">
                 <span
-                  className="shrink-0 text-sm mt-1"
+                  className="shrink-0 text-lg mt-1"
                   style={{ color: "rgba(139,115,85,0.6)" }}
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <p
-                  className="text-sm leading-loose"
+                  className="text-lg leading-loose"
                   style={{
                     fontFamily: "var(--font-noto-sans-sc), sans-serif",
                     color: "rgba(38,34,32,0.75)",
@@ -173,9 +173,10 @@ export default function AmberLandingClient({
           {/* CTA 按钮：跳转填写页 */}
           <button
             onClick={() => router.push(`/amber/${profileId}/submit`)}
-            className="px-12 py-4 text-sm tracking-widest transition-all duration-700 ease-out"
+            className="px-12 py-4 text-lg tracking-widest transition-all duration-700 ease-out"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 600,
               color: "rgba(139,115,85,0.9)",
               border: "1px solid rgba(139,115,85,0.3)",
               borderRadius: "2px",

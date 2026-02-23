@@ -35,7 +35,7 @@ function AmberTextarea({
         color: "#262220",
         fontFamily: "var(--font-noto-sans-sc), sans-serif",
         fontWeight: 300,
-        fontSize: "0.9rem",
+        fontSize: "1.125rem",
         lineHeight: "1.9",
         padding: "8px 0",
         resize: "none",
@@ -74,7 +74,7 @@ function AmberInput({
         color: "#262220",
         fontFamily: "var(--font-noto-sans-sc), sans-serif",
         fontWeight: 300,
-        fontSize: "0.9rem",
+        fontSize: "1.125rem",
         lineHeight: "1.9",
         padding: "8px 0",
         outline: "none",
@@ -124,7 +124,7 @@ export function ProfileForm({
       <div className="flex flex-col gap-8">
         <div>
           <label
-            className="block text-sm tracking-widest mb-4"
+            className="block text-lg tracking-widest mb-4"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               fontWeight: 400,
@@ -142,7 +142,7 @@ export function ProfileForm({
         </div>
         <div>
           <label
-            className="block text-sm tracking-widest mb-4"
+            className="block text-lg tracking-widest mb-4"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               fontWeight: 400,
@@ -159,7 +159,7 @@ export function ProfileForm({
             rows={5}
           />
           <p
-            className="mt-3 text-sm leading-relaxed"
+            className="mt-3 text-lg leading-relaxed"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               fontWeight: 400,
@@ -174,10 +174,10 @@ export function ProfileForm({
       <button
         onClick={handleSave}
         disabled={saveStatus === "saving"}
-        className="self-start px-8 py-3 text-sm tracking-widest transition-all duration-700 ease-out flex items-center gap-2"
+        className="self-start px-8 py-3 text-lg tracking-widest transition-all duration-700 ease-out flex items-center gap-2"
         style={{
           fontFamily: "var(--font-noto-sans-sc), sans-serif",
-          fontWeight: 400,
+          fontWeight: 600,
           color:
             saveStatus === "saved"
               ? "rgba(139,115,85,0.9)"
@@ -245,7 +245,7 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
       </div>
 
       <p
-        className="text-sm leading-loose text-center max-w-sm"
+        className="text-lg leading-loose text-center max-w-sm"
         style={{
           fontFamily: "var(--font-noto-sans-sc), sans-serif",
           fontWeight: 400,
@@ -280,10 +280,10 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
           />
           <button
             onClick={handleCopy}
-            className="text-sm tracking-widest transition-all duration-500 shrink-0"
+            className="text-lg tracking-widest transition-all duration-500 shrink-0"
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
-              fontWeight: 400,
+              fontWeight: 600,
               color: copied
                 ? "rgba(139,115,85,0.9)"
                 : "rgba(139,115,85,0.75)",
