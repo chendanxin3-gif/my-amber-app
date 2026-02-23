@@ -34,7 +34,7 @@ export default async function DashboardPage() {
   const shareUrl = `${origin}/amber/${user.id}`;
 
   return (
-    <main className="relative min-h-screen w-full" style={{ background: "#f5f0e8" }}>
+    <main className="relative min-h-screen w-full" style={{ background: "#F4F1EE" }}>
       {/* 水墨晕染背景 */}
       <InkBackground />
 
@@ -64,7 +64,7 @@ export default async function DashboardPage() {
                   fontFamily: "var(--font-noto-serif-sc), serif",
                   fontWeight: 300,
                   fontSize: "clamp(1.4rem, 3.5vw, 2.4rem)",
-                  color: "rgba(26,20,16,0.82)",
+                  color: "rgba(38,34,32,0.82)",
                   letterSpacing: "0.2em",
                 }}
               >

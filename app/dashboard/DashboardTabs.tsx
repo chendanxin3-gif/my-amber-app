@@ -50,7 +50,7 @@ export default function DashboardTabs({
       {/* ── Tab 导航栏 ── */}
       <div
         className="flex items-end gap-8 px-6 md:px-16 pt-2"
-        style={{ borderBottom: "1px solid rgba(26,20,16,0.08)" }}
+        style={{ borderBottom: "1px solid rgba(38,34,32,0.08)" }}
       >
         {TABS.map((tab) => {
           const isActive = activeTab === tab.id;
@@ -64,7 +64,7 @@ export default function DashboardTabs({
                 fontWeight: 300,
                 color: isActive
                   ? "rgba(139,115,85,0.9)"
-                  : "rgba(26,20,16,0.3)",
+                  : "rgba(38,34,32,0.3)",
                 background: "none",
                 cursor: "pointer",
                 letterSpacing: "0.2em",
@@ -94,7 +94,7 @@ export default function DashboardTabs({
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 300,
-                color: "rgba(26,20,16,0.3)",
+                color: "rgba(38,34,32,0.3)",
                 letterSpacing: "0.18em",
               }}
             >
@@ -126,7 +126,7 @@ export default function DashboardTabs({
                   fontFamily: "var(--font-noto-serif-sc), serif",
                   fontWeight: 300,
                   fontSize: "1.1rem",
-                  color: "rgba(26,20,16,0.75)",
+                  color: "rgba(38,34,32,0.75)",
                   letterSpacing: "0.18em",
                 }}
               >
@@ -137,7 +137,7 @@ export default function DashboardTabs({
                 style={{
                   fontFamily: "var(--font-noto-sans-sc), sans-serif",
                   fontWeight: 300,
-                  color: "rgba(26,20,16,0.35)",
+                  color: "rgba(38,34,32,0.35)",
                   letterSpacing: "0.06em",
                 }}
               >
@@ -163,7 +163,7 @@ export default function DashboardTabs({
                   fontFamily: "var(--font-noto-serif-sc), serif",
                   fontWeight: 300,
                   fontSize: "1.1rem",
-                  color: "rgba(26,20,16,0.75)",
+                  color: "rgba(38,34,32,0.75)",
                   letterSpacing: "0.18em",
                 }}
               >
@@ -174,7 +174,7 @@ export default function DashboardTabs({
                 style={{
                   fontFamily: "var(--font-noto-sans-sc), sans-serif",
                   fontWeight: 300,
-                  color: "rgba(26,20,16,0.35)",
+                  color: "rgba(38,34,32,0.35)",
                   letterSpacing: "0.06em",
                 }}
               >

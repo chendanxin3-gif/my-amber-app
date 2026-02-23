@@ -22,14 +22,14 @@ function ImageLightbox({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center"
-      style={{ background: "rgba(245,240,232,0.92)", backdropFilter: "blur(12px)" }}
+      style={{ background: "rgba(244,241,238,0.92)", backdropFilter: "blur(12px)" }}
       onClick={onClose}
     >
       <button
         className="absolute top-6 right-6 flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300"
         style={{
           border: "1px solid rgba(139,115,85,0.3)",
-          background: "rgba(245,240,232,0.8)",
+          background: "rgba(255,255,255,0.7)",
           color: "rgba(139,115,85,0.7)",
           cursor: "pointer",
         }}
@@ -56,7 +56,7 @@ function ImageLightbox({
           height: "auto",
           objectFit: "contain",
           borderRadius: "2px",
-          boxShadow: "0 8px 60px rgba(26,20,16,0.15)",
+          boxShadow: "0 8px 60px rgba(38,34,32,0.15)",
         }}
         onClick={(e) => e.stopPropagation()}
       />
@@ -104,7 +104,7 @@ function QuoteBlock({
         style={{
           fontFamily: "var(--font-noto-sans-sc), sans-serif",
           fontWeight: 300,
-          color: muted ? "rgba(26,20,16,0.45)" : "rgba(26,20,16,0.7)",
+          color: muted ? "rgba(38,34,32,0.45)" : "rgba(38,34,32,0.7)",
           letterSpacing: "0.03em",
         }}
       >
@@ -129,14 +129,14 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
     <div
       className="relative flex flex-col break-inside-avoid mb-6"
       style={{
-        background: "rgba(245,240,232,0.72)",
+        background: "rgba(255,255,255,0.60)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
         border: `1px solid ${GOLD_BORDER}`,
         borderRadius: "2px",
         padding: "28px 28px 24px",
         boxShadow:
-          "0 2px 24px rgba(139,115,85,0.06), 0 1px 0 rgba(255,255,255,0.7) inset",
+          "0 2px 24px rgba(139,115,85,0.06), 0 1px 0 rgba(255,255,255,0.8) inset",
       }}
     >
       {/* 右上角装饰角标 */}
@@ -157,7 +157,7 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
             style={{
               fontFamily: "var(--font-noto-serif-sc), serif",
               fontWeight: 400,
-              color: "rgba(26,20,16,0.82)",
+              color: "rgba(38,34,32,0.82)",
             }}
           >
             {entry.author_name}
@@ -187,19 +187,19 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
                 width="12"
                 height="10"
                 rx="1"
-                stroke="rgba(139,115,85,0.5)"
-                strokeWidth="1"
-              />
-              <circle
-                cx="5.5"
-                cy="6.5"
-                r="1.2"
-                stroke="rgba(139,115,85,0.5)"
-                strokeWidth="1"
-              />
-              <path
-                d="M2 11l3.5-3 2.5 2.5 2-2.5 4 3.5"
-                stroke="rgba(139,115,85,0.5)"
+          stroke="rgba(139,115,85,0.5)"
+          strokeWidth="1"
+          />
+          <circle
+            cx="5.5"
+            cy="6.5"
+            r="1.2"
+            stroke="rgba(139,115,85,0.5)"
+            strokeWidth="1"
+          />
+          <path
+            d="M2 11l3.5-3 2.5 2.5 2-2.5 4 3.5"
+            stroke="rgba(139,115,85,0.5)"
                 strokeWidth="1"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -250,7 +250,7 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
           style={{
             fontFamily: "var(--font-noto-serif-sc), serif",
             fontWeight: 400,
-            color: "rgba(139,115,85,0.85)",
+              color: "rgba(139,115,85,0.85)",
             letterSpacing: "0.2em",
           }}
         >
@@ -261,7 +261,7 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
       {/* 分割线 */}
       <div
         className="mb-6 h-px"
-        style={{ background: "rgba(26,20,16,0.06)" }}
+          style={{ background: "rgba(38,34,32,0.06)" }}
       />
 
       {/* 必填内容 */}
@@ -273,7 +273,7 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
         <>
           <div
             className="mt-5 mb-5 h-px"
-            style={{ background: "rgba(26,20,16,0.05)" }}
+            style={{ background: "rgba(38,34,32,0.05)" }}
           />
           {entry.q4_blind_spot && (
             <QuoteBlock label="我的盲点" content={entry.q4_blind_spot} muted />
@@ -313,7 +313,7 @@ export default function AmberGrid({ ambers }: { ambers: AmberEntry[] }) {
           style={{
             fontFamily: "var(--font-noto-sans-sc), sans-serif",
             fontWeight: 300,
-            color: "rgba(26,20,16,0.2)",
+              color: "rgba(38,34,32,0.2)",
             letterSpacing: "0.18em",
           }}
         >

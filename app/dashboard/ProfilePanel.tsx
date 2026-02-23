@@ -31,8 +31,8 @@ function AmberTextarea({
         width: "100%",
         background: "transparent",
         border: "none",
-        borderBottom: `1px solid ${focused ? GOLD : "rgba(26,20,16,0.12)"}`,
-        color: "#1a1410",
+        borderBottom: `1px solid ${focused ? GOLD : "rgba(38,34,32,0.12)"}`,
+        color: "#262220",
         fontFamily: "var(--font-noto-sans-sc), sans-serif",
         fontWeight: 300,
         fontSize: "0.9rem",
@@ -70,8 +70,8 @@ function AmberInput({
         width: "100%",
         background: "transparent",
         border: "none",
-        borderBottom: `1px solid ${focused ? GOLD : "rgba(26,20,16,0.12)"}`,
-        color: "#1a1410",
+        borderBottom: `1px solid ${focused ? GOLD : "rgba(38,34,32,0.12)"}`,
+        color: "#262220",
         fontFamily: "var(--font-noto-sans-sc), sans-serif",
         fontWeight: 300,
         fontSize: "0.9rem",
@@ -128,7 +128,7 @@ export function ProfileForm({
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               fontWeight: 300,
-              color: "rgba(26,20,16,0.4)",
+              color: "rgba(38,34,32,0.4)",
               letterSpacing: "0.18em",
             }}
           >
@@ -146,7 +146,7 @@ export function ProfileForm({
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               fontWeight: 300,
-              color: "rgba(26,20,16,0.4)",
+              color: "rgba(38,34,32,0.4)",
               letterSpacing: "0.18em",
             }}
           >
@@ -163,7 +163,7 @@ export function ProfileForm({
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               fontWeight: 300,
-              color: "rgba(26,20,16,0.25)",
+              color: "rgba(38,34,32,0.25)",
             }}
           >
             这段引言将展示在你的专属填写页，为受邀者营造情绪氛围。
@@ -230,7 +230,7 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
       <div
         className="p-7 rounded"
         style={{
-          background: "rgba(245,240,232,0.8)",
+          background: "rgba(255,255,255,0.72)",
           border: "1px solid rgba(139,115,85,0.18)",
           boxShadow: "0 2px 24px rgba(139,115,85,0.06)",
         }}
@@ -239,7 +239,7 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
           value={shareUrl}
           size={180}
           bgColor="transparent"
-          fgColor="rgba(100,80,55,0.82)"
+          fgColor="rgba(100,80,55,0.85)"
           level="M"
         />
       </div>
@@ -249,8 +249,8 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
         style={{
           fontFamily: "var(--font-noto-sans-sc), sans-serif",
           fontWeight: 300,
-          color: "rgba(26,20,16,0.4)",
-          letterSpacing: "0.04em",
+              color: "rgba(37,45,16,0.4)",
+              letterSpacing: "0.04em",
         }}
       >
         让朋友扫描二维码，或将链接发送给他们，
@@ -262,8 +262,8 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
         <div
           className="flex items-center gap-3 px-4 py-3"
           style={{
-            background: "rgba(245,240,232,0.6)",
-            border: "1px solid rgba(26,20,16,0.08)",
+          background: "rgba(255,255,255,0.55)",
+          border: "1px solid rgba(38,34,32,0.08)",
             borderRadius: "1px",
           }}
         >
@@ -273,7 +273,7 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
             value={shareUrl}
             className="flex-1 bg-transparent text-xs outline-none"
             style={{
-              color: "rgba(26,20,16,0.4)",
+              color: "rgba(38,34,32,0.4)",
               fontFamily: "var(--font-geist-mono), monospace",
               cursor: "text",
             }}

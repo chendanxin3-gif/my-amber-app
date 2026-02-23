@@ -16,7 +16,7 @@ export default function LogoutButton() {
       style={{
         fontFamily: "var(--font-noto-sans-sc), sans-serif",
         fontWeight: 300,
-        color: "rgba(26,20,16,0.22)",
+        color: "rgba(38,34,32,0.22)",
         background: "none",
         cursor: "pointer",
         letterSpacing: "0.18em",

@@ -36,8 +36,8 @@ function AmberInput({
         width: "100%",
         background: "transparent",
         border: "none",
-        borderBottom: `1px solid ${focused ? GOLD : "rgba(26,20,16,0.15)"}`,
-        color: "#1a1410",
+        borderBottom: `1px solid ${focused ? GOLD : "rgba(38,34,32,0.15)"}`,
+        color: "#262220",
         fontFamily: "var(--font-noto-sans-sc), sans-serif",
         fontSize: "0.9rem",
         lineHeight: "1.9",
@@ -115,7 +115,7 @@ export default function LandingPage() {
   return (
     <main
       className="relative h-screen w-full overflow-hidden flex items-center justify-center cursor-pointer select-none"
-      style={{ background: "#f5f0e8" }}
+      style={{ background: "#F4F1EE" }}
       onClick={() => {
         if (!actTwo) setActTwo(true);
       }}
@@ -136,19 +136,26 @@ export default function LandingPage() {
           zIndex: 1,
         }}
       >
-        <div className="max-w-2xl w-full">
+        <div
+          className="max-w-2xl w-full px-10 py-12 md:px-16 md:py-14"
+          style={{
+            background: "rgba(244,241,238,0.72)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+          }}
+        >
           {/* 主标题 */}
           <h1
             className="tracking-widest mb-10"
             style={{
-              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 300,
               fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
-              color: "rgba(26,20,16,0.85)",
+              color: "rgba(38,34,32,0.85)",
               letterSpacing: "0.22em",
             }}
           >
-            萬物見我・一期一會
+            万物见我·一期一会
           </h1>
 
           <p
@@ -157,7 +164,7 @@ export default function LandingPage() {
               fontFamily: "var(--font-noto-serif-sc), serif",
               fontWeight: 300,
               fontSize: "clamp(0.82rem, 1.5vw, 0.95rem)",
-              color: "rgba(26,20,16,0.55)",
+              color: "rgba(38,34,32,0.55)",
               letterSpacing: "0.04em",
             }}
           >
@@ -170,7 +177,7 @@ export default function LandingPage() {
               fontFamily: "var(--font-noto-serif-sc), serif",
               fontWeight: 300,
               fontSize: "clamp(0.82rem, 1.5vw, 0.95rem)",
-              color: "rgba(26,20,16,0.55)",
+              color: "rgba(38,34,32,0.55)",
               letterSpacing: "0.04em",
             }}
           >
@@ -183,7 +190,7 @@ export default function LandingPage() {
               fontFamily: "var(--font-noto-serif-sc), serif",
               fontWeight: 300,
               fontSize: "clamp(0.82rem, 1.5vw, 0.95rem)",
-              color: "rgba(26,20,16,0.55)",
+              color: "rgba(38,34,32,0.55)",
               letterSpacing: "0.04em",
             }}
           >
@@ -242,7 +249,7 @@ export default function LandingPage() {
             fontFamily: "var(--font-noto-serif-sc), serif",
             fontWeight: 300,
             fontSize: "clamp(1.5rem, 4vw, 2.8rem)",
-            color: "rgba(26,20,16,0.82)",
+            color: "rgba(38,34,32,0.82)",
             letterSpacing: "0.22em",
           }}
         >
@@ -252,7 +259,7 @@ export default function LandingPage() {
         {/* 登录注册卡片 */}
         <div
           style={{
-            background: "rgba(245,240,232,0.75)",
+            background: "rgba(255,255,255,0.60)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
             border: `1px solid ${GOLD_BORDER}`,
@@ -281,7 +288,7 @@ export default function LandingPage() {
                   color:
                     authMode === mode
                       ? "rgba(139,115,85,0.9)"
-                      : "rgba(26,20,16,0.3)",
+                      : "rgba(38,34,32,0.3)",
                   borderBottom:
                     authMode === mode
                       ? `1px solid rgba(139,115,85,0.5)`
@@ -372,21 +379,21 @@ export default function LandingPage() {
           <div className="flex items-center gap-4 my-5">
             <div
               className="flex-1 h-px"
-              style={{ background: "rgba(26,20,16,0.08)" }}
+              style={{ background: "rgba(38,34,32,0.08)" }}
             />
             <span
               style={{
                 fontFamily: "var(--font-noto-sans-sc), sans-serif",
                 fontWeight: 300,
                 fontSize: "0.7rem",
-                color: "rgba(26,20,16,0.25)",
+                color: "rgba(38,34,32,0.25)",
               }}
             >
               或
             </span>
             <div
               className="flex-1 h-px"
-              style={{ background: "rgba(26,20,16,0.08)" }}
+              style={{ background: "rgba(38,34,32,0.08)" }}
             />
           </div>
 
@@ -397,8 +404,8 @@ export default function LandingPage() {
             style={{
               fontFamily: "var(--font-noto-sans-sc), sans-serif",
               fontWeight: 300,
-              color: "rgba(26,20,16,0.35)",
-              border: "1px solid rgba(26,20,16,0.1)",
+              color: "rgba(38,34,32,0.35)",
+              border: "1px solid rgba(38,34,32,0.1)",
               borderRadius: "1px",
               background: "transparent",
               cursor: "pointer",

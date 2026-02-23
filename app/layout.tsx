@@ -1,20 +1,6 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Noto_Serif_SC, Noto_Sans_SC } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const notoSerifSC = Noto_Serif_SC({
-  variable: "--font-noto-serif-sc",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  display: "swap",
-});
-
-const notoSansSC = Noto_Sans_SC({
-  variable: "--font-noto-sans-sc",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  display: "swap",
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -34,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body
-        className={`${notoSerifSC.variable} ${notoSansSC.variable} ${geistMono.variable} antialiased`}
+        className={`${geistMono.variable} antialiased`}
       >
         {children}
       </body>
