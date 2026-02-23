@@ -50,7 +50,7 @@ export default function DashboardTabs({
       {/* ── Tab 导航栏 ── */}
       <div
         className="flex items-end gap-8 px-6 md:px-16 pt-2"
-        style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
+        style={{ borderBottom: "1px solid rgba(26,20,16,0.08)" }}
       >
         {TABS.map((tab) => {
           const isActive = activeTab === tab.id;
@@ -60,23 +60,21 @@ export default function DashboardTabs({
               onClick={() => setActiveTab(tab.id)}
               className="relative pb-4 text-xs tracking-widest transition-all duration-500"
               style={{
-                fontFamily: "var(--font-geist-sans), sans-serif",
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 300,
                 color: isActive
-                  ? "rgba(212,175,55,0.9)"
-                  : "rgba(232,224,208,0.3)",
+                  ? "rgba(139,115,85,0.9)"
+                  : "rgba(26,20,16,0.3)",
                 background: "none",
                 cursor: "pointer",
-                letterSpacing: "0.18em",
+                letterSpacing: "0.2em",
               }}
             >
               {tab.label}
-              {/* 琥珀色激活底线 */}
               <span
-                className="absolute bottom-0 left-0 right-0 h-0.5 transition-all duration-500"
+                className="absolute bottom-0 left-0 right-0 h-px transition-all duration-500"
                 style={{
-                  background: isActive
-                    ? "rgba(212,175,55,0.8)"
-                    : "transparent",
+                  background: isActive ? "rgba(139,115,85,0.7)" : "transparent",
                   transform: isActive ? "scaleX(1)" : "scaleX(0)",
                   transformOrigin: "left",
                 }}
@@ -88,22 +86,25 @@ export default function DashboardTabs({
 
       {/* ── Tab 内容区 ── */}
 
-      {/* 我的琥珀 */}
       {activeTab === "ambers" && (
         <div key="ambers" className="animate-fade-in">
-          {/* 统计小标题 */}
           <div className="px-6 md:px-16 pt-10 pb-2">
             <p
               className="text-xs tracking-widest"
-              style={{ color: "rgba(232,224,208,0.3)" }}
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 300,
+                color: "rgba(26,20,16,0.3)",
+                letterSpacing: "0.18em",
+              }}
             >
               已收到{" "}
-              <span style={{ color: "rgba(212,175,55,0.7)" }}>{totalCount}</span>{" "}
+              <span style={{ color: "rgba(139,115,85,0.8)" }}>{totalCount}</span>{" "}
               枚琥珀
               {photosCount > 0 && (
                 <>
                   ，其中{" "}
-                  <span style={{ color: "rgba(212,175,55,0.5)" }}>
+                  <span style={{ color: "rgba(139,115,85,0.6)" }}>
                     {photosCount}
                   </span>{" "}
                   枚含有照片
@@ -115,23 +116,30 @@ export default function DashboardTabs({
         </div>
       )}
 
-      {/* 定义自我 */}
       {activeTab === "identity" && (
         <div key="identity" className="animate-fade-in">
           <div className="max-w-xl mx-auto px-6 md:px-8 py-14">
             <div className="mb-10">
               <h2
-                className="text-lg tracking-widest mb-3"
+                className="tracking-widest mb-3"
                 style={{
-                  fontFamily: "var(--font-lora), Georgia, serif",
-                  color: "#e8e0d0",
+                  fontFamily: "var(--font-noto-serif-sc), serif",
+                  fontWeight: 300,
+                  fontSize: "1.1rem",
+                  color: "rgba(26,20,16,0.75)",
+                  letterSpacing: "0.18em",
                 }}
               >
                 定义自我
               </h2>
               <p
                 className="text-xs leading-loose"
-                style={{ color: "rgba(232,224,208,0.3)" }}
+                style={{
+                  fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                  fontWeight: 300,
+                  color: "rgba(26,20,16,0.35)",
+                  letterSpacing: "0.06em",
+                }}
               >
                 这里的设置将影响你的专属填写页面所呈现的面貌。
               </p>
@@ -145,23 +153,30 @@ export default function DashboardTabs({
         </div>
       )}
 
-      {/* 获取信物 */}
       {activeTab === "share" && (
         <div key="share" className="animate-fade-in">
           <div className="max-w-lg mx-auto px-6 md:px-8 py-14">
             <div className="mb-12 text-center">
               <h2
-                className="text-lg tracking-widest mb-3"
+                className="tracking-widest mb-3"
                 style={{
-                  fontFamily: "var(--font-lora), Georgia, serif",
-                  color: "#e8e0d0",
+                  fontFamily: "var(--font-noto-serif-sc), serif",
+                  fontWeight: 300,
+                  fontSize: "1.1rem",
+                  color: "rgba(26,20,16,0.75)",
+                  letterSpacing: "0.18em",
                 }}
               >
                 获取信物
               </h2>
               <p
                 className="text-xs leading-loose"
-                style={{ color: "rgba(232,224,208,0.3)" }}
+                style={{
+                  fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                  fontWeight: 300,
+                  color: "rgba(26,20,16,0.35)",
+                  letterSpacing: "0.06em",
+                }}
               >
                 将你的专属入口分享出去，邀请见证者为你凝固琥珀。
               </p>

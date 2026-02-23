@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import InkBackground from "@/app/components/InkBackground";
+import BgmPlayer from "@/app/components/BgmPlayer";
 
 type AuthMode = "login" | "register";
 type AuthStatus = "idle" | "loading" | "error";
 
-const AMBER = "#D4AF37";
-const AMBER_BORDER = "rgba(212,175,55,0.35)";
+const GOLD = "#8b7355";
+const GOLD_BORDER = "rgba(139,115,85,0.3)";
 
 function AmberInput({
   type,
@@ -34,17 +36,17 @@ function AmberInput({
         width: "100%",
         background: "transparent",
         border: "none",
-        borderBottom: `1px solid ${focused ? AMBER : "rgba(255,255,255,0.12)"}`,
-        color: "#e8e0d0",
-        fontFamily: "var(--font-geist-sans), sans-serif",
+        borderBottom: `1px solid ${focused ? GOLD : "rgba(26,20,16,0.15)"}`,
+        color: "#1a1410",
+        fontFamily: "var(--font-noto-sans-sc), sans-serif",
         fontSize: "0.9rem",
         lineHeight: "1.9",
         padding: "8px 0",
         outline: "none",
         transition: "border-bottom-color 600ms ease-out",
-        caretColor: AMBER,
+        caretColor: GOLD,
       }}
-      className="placeholder:text-white/20"
+      className="placeholder:text-black/20"
     />
   );
 }
@@ -113,69 +115,76 @@ export default function LandingPage() {
   return (
     <main
       className="relative h-screen w-full overflow-hidden flex items-center justify-center cursor-pointer select-none"
-      style={{ background: "#0a0a0a" }}
+      style={{ background: "#f5f0e8" }}
       onClick={() => {
         if (!actTwo) setActTwo(true);
       }}
     >
-      {/* 背景琥珀渐晕 */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 50% 60%, rgba(212,175,55,0.04) 0%, transparent 70%)",
-        }}
-      />
+      {/* 水墨晕染动态背景 */}
+      <InkBackground />
+
+      {/* 背景音乐控制器 */}
+      <BgmPlayer />
 
       {/* ── 第一幕：平台理念 ── */}
       <div
-        className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-12"
+        className="absolute inset-0 flex flex-col items-center justify-center px-8 md:px-16"
         style={{
           opacity: actTwo ? 0 : 1,
           transition: "opacity 1000ms ease-out",
           pointerEvents: actTwo ? "none" : "auto",
+          zIndex: 1,
         }}
       >
-        <div className="max-w-3xl w-full">
+        <div className="max-w-2xl w-full">
+          {/* 主标题 */}
           <h1
-            className="text-2xl md:text-3xl tracking-widest mb-10"
+            className="tracking-widest mb-10"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "rgba(232, 224, 208, 0.9)",
-              letterSpacing: "0.18em",
+              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontWeight: 300,
+              fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
+              color: "rgba(26,20,16,0.85)",
+              letterSpacing: "0.22em",
             }}
           >
-            万物见我 · 一期一会
+            萬物見我・一期一會
           </h1>
 
           <p
-            className="leading-loose text-sm md:text-base"
+            className="leading-loose"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "rgba(232, 224, 208, 0.65)",
-              letterSpacing: "0.02em",
+              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontWeight: 300,
+              fontSize: "clamp(0.82rem, 1.5vw, 0.95rem)",
+              color: "rgba(26,20,16,0.55)",
+              letterSpacing: "0.04em",
             }}
           >
             日本茶道里讲「一期一会」——此刻的相遇，一生仅有一次，绝不重来。
           </p>
 
           <p
-            className="mt-7 leading-loose text-sm md:text-base"
+            className="mt-7 leading-loose"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "rgba(232, 224, 208, 0.65)",
-              letterSpacing: "0.02em",
+              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontWeight: 300,
+              fontSize: "clamp(0.82rem, 1.5vw, 0.95rem)",
+              color: "rgba(26,20,16,0.55)",
+              letterSpacing: "0.04em",
             }}
           >
-            告别人情世故的点赞，收集只属于你的关系琥珀。生成你的专属链接，邀请真正了解你的人，用他们最真实的目光，为你凝固一枚永恒的关系印记。
+            告别人情世故的点赞，收集只属于你的关系印记。生成专属链接，邀请真正了解你的人，用他们最真实的目光，为你凝固一枚永恒的关系琥珀。
           </p>
 
           <p
-            className="mt-7 leading-loose text-sm md:text-base"
+            className="mt-7 leading-loose"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "rgba(232, 224, 208, 0.65)",
-              letterSpacing: "0.02em",
+              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontWeight: 300,
+              fontSize: "clamp(0.82rem, 1.5vw, 0.95rem)",
+              color: "rgba(26,20,16,0.55)",
+              letterSpacing: "0.04em",
             }}
           >
             人无法真正看清自己。请借他者的眼睛，凝固那个你未曾察觉的自己。
@@ -187,25 +196,27 @@ export default function LandingPage() {
           className="absolute bottom-12 left-0 right-0 flex flex-col items-center gap-3 animate-pulse"
         >
           <svg
-            width="20"
-            height="20"
+            width="18"
+            height="18"
             viewBox="0 0 20 20"
             fill="none"
-            style={{ color: "rgba(212,175,55,0.5)" }}
+            style={{ color: "rgba(139,115,85,0.5)" }}
           >
             <path
               d="M10 3v14M10 17l-5-5M10 17l5-5"
               stroke="currentColor"
-              strokeWidth="1.2"
+              strokeWidth="1"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
           <span
-            className="text-xs tracking-widest"
             style={{
-              color: "rgba(212,175,55,0.45)",
-              fontFamily: "var(--font-geist-sans), sans-serif",
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 300,
+              fontSize: "0.68rem",
+              color: "rgba(139,115,85,0.5)",
+              letterSpacing: "0.22em",
             }}
           >
             点击水面，继续
@@ -220,37 +231,41 @@ export default function LandingPage() {
           opacity: actTwo ? 1 : 0,
           transition: "opacity 1000ms ease-out",
           pointerEvents: actTwo ? "auto" : "none",
+          zIndex: 1,
         }}
         onClick={(e) => e.stopPropagation()}
       >
+        {/* 主标题 */}
         <h1
-          className="text-3xl md:text-5xl lg:text-6xl tracking-widest text-center mb-14"
+          className="text-center tracking-widest mb-12"
           style={{
-            fontFamily: "var(--font-lora), Georgia, serif",
-            color: "#e8e0d0",
-            letterSpacing: "0.18em",
+            fontFamily: "var(--font-noto-serif-sc), serif",
+            fontWeight: 300,
+            fontSize: "clamp(1.5rem, 4vw, 2.8rem)",
+            color: "rgba(26,20,16,0.82)",
+            letterSpacing: "0.22em",
           }}
         >
-          万物见我 · 一期一会
+          萬物見我・一期一會
         </h1>
 
         {/* 登录注册卡片 */}
         <div
           style={{
-            background: "rgba(255,255,255,0.025)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
-            border: `1px solid ${AMBER_BORDER}`,
-            borderRadius: "4px",
-            padding: "40px 40px 36px",
+            background: "rgba(245,240,232,0.75)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            border: `1px solid ${GOLD_BORDER}`,
+            borderRadius: "2px",
+            padding: "44px 44px 40px",
             width: "100%",
             maxWidth: "400px",
             boxShadow:
-              "0 0 60px rgba(212,175,55,0.05), inset 0 0 20px rgba(212,175,55,0.02)",
+              "0 4px 40px rgba(139,115,85,0.08), 0 1px 0 rgba(255,255,255,0.8) inset",
           }}
         >
           {/* 模式切换 */}
-          <div className="flex gap-6 mb-10">
+          <div className="flex gap-7 mb-10">
             {(["login", "register"] as AuthMode[]).map((mode) => (
               <button
                 key={mode}
@@ -261,18 +276,20 @@ export default function LandingPage() {
                 }}
                 className="text-xs tracking-widest transition-all duration-500"
                 style={{
-                  fontFamily: "var(--font-geist-sans), sans-serif",
+                  fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                  fontWeight: 300,
                   color:
                     authMode === mode
-                      ? "rgba(212,175,55,0.9)"
-                      : "rgba(232,224,208,0.25)",
+                      ? "rgba(139,115,85,0.9)"
+                      : "rgba(26,20,16,0.3)",
                   borderBottom:
                     authMode === mode
-                      ? `1px solid rgba(212,175,55,0.5)`
+                      ? `1px solid rgba(139,115,85,0.5)`
                       : "1px solid transparent",
                   paddingBottom: "4px",
                   background: "none",
                   cursor: "pointer",
+                  letterSpacing: "0.2em",
                 }}
               >
                 {mode === "login" ? "登录" : "注册"}
@@ -300,7 +317,10 @@ export default function LandingPage() {
           {errorMsg && (
             <p
               className="mb-4 text-xs leading-relaxed"
-              style={{ color: "rgba(239,68,68,0.8)" }}
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                color: "rgba(180,60,50,0.8)",
+              }}
             >
               {errorMsg}
             </p>
@@ -308,7 +328,10 @@ export default function LandingPage() {
           {successMsg && (
             <p
               className="mb-4 text-xs leading-relaxed"
-              style={{ color: "rgba(212,175,55,0.8)" }}
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                color: "rgba(139,115,85,0.9)",
+              }}
             >
               {successMsg}
             </p>
@@ -320,20 +343,21 @@ export default function LandingPage() {
             disabled={authStatus === "loading"}
             className="w-full py-3 text-xs tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
             style={{
-              fontFamily: "var(--font-geist-sans), sans-serif",
-              color: "rgba(212,175,55,0.9)",
-              border: `1px solid ${AMBER_BORDER}`,
-              borderRadius: "2px",
-              background: "rgba(212,175,55,0.05)",
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 300,
+              color: "rgba(139,115,85,0.9)",
+              border: `1px solid ${GOLD_BORDER}`,
+              borderRadius: "1px",
+              background: "rgba(139,115,85,0.06)",
               cursor: authStatus === "loading" ? "not-allowed" : "pointer",
-              letterSpacing: "0.15em",
+              letterSpacing: "0.18em",
             }}
           >
             {authStatus === "loading" ? (
               <>
                 <span
                   className="inline-block w-3 h-3 rounded-full border-t border-r animate-spin"
-                  style={{ borderColor: `${AMBER} transparent` }}
+                  style={{ borderColor: `${GOLD} transparent` }}
                 />
                 <span>处理中…</span>
               </>
@@ -348,17 +372,21 @@ export default function LandingPage() {
           <div className="flex items-center gap-4 my-5">
             <div
               className="flex-1 h-px"
-              style={{ background: "rgba(255,255,255,0.05)" }}
+              style={{ background: "rgba(26,20,16,0.08)" }}
             />
             <span
-              className="text-xs"
-              style={{ color: "rgba(232,224,208,0.2)" }}
+              style={{
+                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontWeight: 300,
+                fontSize: "0.7rem",
+                color: "rgba(26,20,16,0.25)",
+              }}
             >
               或
             </span>
             <div
               className="flex-1 h-px"
-              style={{ background: "rgba(255,255,255,0.05)" }}
+              style={{ background: "rgba(26,20,16,0.08)" }}
             />
           </div>
 
@@ -367,13 +395,14 @@ export default function LandingPage() {
             onClick={handleGithubLogin}
             className="w-full py-3 text-xs tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
             style={{
-              fontFamily: "var(--font-geist-sans), sans-serif",
-              color: "rgba(232,224,208,0.4)",
-              border: "1px solid rgba(255,255,255,0.06)",
-              borderRadius: "2px",
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 300,
+              color: "rgba(26,20,16,0.35)",
+              border: "1px solid rgba(26,20,16,0.1)",
+              borderRadius: "1px",
               background: "transparent",
               cursor: "pointer",
-              letterSpacing: "0.12em",
+              letterSpacing: "0.14em",
             }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">

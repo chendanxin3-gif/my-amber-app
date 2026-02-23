@@ -14,9 +14,12 @@ export default function LogoutButton() {
       onClick={handleLogout}
       className="mt-1 text-xs tracking-widest transition-all duration-300"
       style={{
-        color: "rgba(232,224,208,0.2)",
+        fontFamily: "var(--font-noto-sans-sc), sans-serif",
+        fontWeight: 300,
+        color: "rgba(26,20,16,0.22)",
         background: "none",
         cursor: "pointer",
+        letterSpacing: "0.18em",
       }}
     >
       退出登录

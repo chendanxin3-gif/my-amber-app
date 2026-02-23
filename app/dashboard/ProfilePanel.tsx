@@ -4,8 +4,8 @@ import { useState, useRef } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { createClient } from "@/lib/supabase/client";
 
-const AMBER = "#D4AF37";
-const AMBER_BORDER = "rgba(212,175,55,0.35)";
+const GOLD = "#8b7355";
+const GOLD_BORDER = "rgba(139,115,85,0.3)";
 
 function AmberTextarea({
   placeholder,
@@ -31,18 +31,19 @@ function AmberTextarea({
         width: "100%",
         background: "transparent",
         border: "none",
-        borderBottom: `1px solid ${focused ? AMBER : "rgba(255,255,255,0.1)"}`,
-        color: "#e8e0d0",
-        fontFamily: "var(--font-geist-sans), sans-serif",
+        borderBottom: `1px solid ${focused ? GOLD : "rgba(26,20,16,0.12)"}`,
+        color: "#1a1410",
+        fontFamily: "var(--font-noto-sans-sc), sans-serif",
+        fontWeight: 300,
         fontSize: "0.9rem",
         lineHeight: "1.9",
         padding: "8px 0",
         resize: "none",
         outline: "none",
         transition: "border-bottom-color 600ms ease-out",
-        caretColor: AMBER,
+        caretColor: GOLD,
       }}
-      className="placeholder:text-white/20 w-full"
+      className="placeholder:text-black/20 w-full"
     />
   );
 }
@@ -69,17 +70,18 @@ function AmberInput({
         width: "100%",
         background: "transparent",
         border: "none",
-        borderBottom: `1px solid ${focused ? AMBER : "rgba(255,255,255,0.1)"}`,
-        color: "#e8e0d0",
-        fontFamily: "var(--font-geist-sans), sans-serif",
+        borderBottom: `1px solid ${focused ? GOLD : "rgba(26,20,16,0.12)"}`,
+        color: "#1a1410",
+        fontFamily: "var(--font-noto-sans-sc), sans-serif",
+        fontWeight: 300,
         fontSize: "0.9rem",
         lineHeight: "1.9",
         padding: "8px 0",
         outline: "none",
         transition: "border-bottom-color 600ms ease-out",
-        caretColor: AMBER,
+        caretColor: GOLD,
       }}
-      className="placeholder:text-white/20 w-full"
+      className="placeholder:text-black/20 w-full"
     />
   );
 }
@@ -123,7 +125,12 @@ export function ProfileForm({
         <div>
           <label
             className="block text-xs tracking-widest mb-4"
-            style={{ color: "rgba(232,224,208,0.35)" }}
+            style={{
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 300,
+              color: "rgba(26,20,16,0.4)",
+              letterSpacing: "0.18em",
+            }}
           >
             你的名字 / 昵称
           </label>
@@ -136,7 +143,12 @@ export function ProfileForm({
         <div>
           <label
             className="block text-xs tracking-widest mb-4"
-            style={{ color: "rgba(232,224,208,0.35)" }}
+            style={{
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 300,
+              color: "rgba(26,20,16,0.4)",
+              letterSpacing: "0.18em",
+            }}
           >
             背景引言
           </label>
@@ -148,7 +160,11 @@ export function ProfileForm({
           />
           <p
             className="mt-3 text-xs leading-relaxed"
-            style={{ color: "rgba(232,224,208,0.2)" }}
+            style={{
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 300,
+              color: "rgba(26,20,16,0.25)",
+            }}
           >
             这段引言将展示在你的专属填写页，为受邀者营造情绪氛围。
           </p>
@@ -160,24 +176,25 @@ export function ProfileForm({
         disabled={saveStatus === "saving"}
         className="self-start px-8 py-3 text-xs tracking-widest transition-all duration-700 ease-out flex items-center gap-2"
         style={{
-          fontFamily: "var(--font-geist-sans), sans-serif",
+          fontFamily: "var(--font-noto-sans-sc), sans-serif",
+          fontWeight: 300,
           color:
             saveStatus === "saved"
-              ? "rgba(212,175,55,0.9)"
-              : "rgba(212,175,55,0.7)",
+              ? "rgba(139,115,85,0.9)"
+              : "rgba(139,115,85,0.75)",
           border: `1px solid ${
-            saveStatus === "saved" ? AMBER_BORDER : "rgba(212,175,55,0.2)"
+            saveStatus === "saved" ? GOLD_BORDER : "rgba(139,115,85,0.2)"
           }`,
-          borderRadius: "2px",
-          background: "rgba(255,255,255,0.02)",
+          borderRadius: "1px",
+          background: "rgba(139,115,85,0.04)",
           cursor: saveStatus === "saving" ? "not-allowed" : "pointer",
-          letterSpacing: "0.15em",
+          letterSpacing: "0.18em",
         }}
       >
         {saveStatus === "saving" && (
           <span
             className="inline-block w-3 h-3 rounded-full border-t border-r animate-spin"
-            style={{ borderColor: `${AMBER} transparent` }}
+            style={{ borderColor: `${GOLD} transparent` }}
           />
         )}
         {saveStatus === "saved"
@@ -209,39 +226,45 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
 
   return (
     <div className="flex flex-col items-center gap-10">
-      {/* QR 码居中，放大展示 */}
+      {/* QR 码居中 */}
       <div
         className="p-7 rounded"
         style={{
-          background: "rgba(255,255,255,0.03)",
-          border: "1px solid rgba(212,175,55,0.15)",
-          boxShadow: "0 0 40px rgba(212,175,55,0.04)",
+          background: "rgba(245,240,232,0.8)",
+          border: "1px solid rgba(139,115,85,0.18)",
+          boxShadow: "0 2px 24px rgba(139,115,85,0.06)",
         }}
       >
         <QRCodeSVG
           value={shareUrl}
           size={180}
           bgColor="transparent"
-          fgColor="rgba(212,175,55,0.85)"
+          fgColor="rgba(100,80,55,0.82)"
           level="M"
         />
       </div>
 
-      {/* 引导文字 */}
       <p
         className="text-sm leading-loose text-center max-w-sm"
-        style={{ color: "rgba(232,224,208,0.35)" }}
+        style={{
+          fontFamily: "var(--font-noto-sans-sc), sans-serif",
+          fontWeight: 300,
+          color: "rgba(26,20,16,0.4)",
+          letterSpacing: "0.04em",
+        }}
       >
-        让朋友扫描二维码，或将链接发送给他们，<br />即可为你封存一枚专属琥珀。
+        让朋友扫描二维码，或将链接发送给他们，
+        <br />即可为你封存一枚专属琥珀。
       </p>
 
       {/* 链接复制 */}
       <div className="w-full max-w-md">
         <div
-          className="flex items-center gap-3 px-4 py-3 rounded"
+          className="flex items-center gap-3 px-4 py-3"
           style={{
-            background: "rgba(255,255,255,0.02)",
-            border: "1px solid rgba(255,255,255,0.06)",
+            background: "rgba(245,240,232,0.6)",
+            border: "1px solid rgba(26,20,16,0.08)",
+            borderRadius: "1px",
           }}
         >
           <input
@@ -250,7 +273,7 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
             value={shareUrl}
             className="flex-1 bg-transparent text-xs outline-none"
             style={{
-              color: "rgba(232,224,208,0.4)",
+              color: "rgba(26,20,16,0.4)",
               fontFamily: "var(--font-geist-mono), monospace",
               cursor: "text",
             }}
@@ -259,11 +282,14 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
             onClick={handleCopy}
             className="text-xs tracking-widest transition-all duration-500 shrink-0"
             style={{
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 300,
               color: copied
-                ? "rgba(212,175,55,0.9)"
-                : "rgba(212,175,55,0.5)",
+                ? "rgba(139,115,85,0.9)"
+                : "rgba(139,115,85,0.6)",
               background: "none",
               cursor: "pointer",
+              letterSpacing: "0.12em",
             }}
           >
             {copied ? "已复制" : "复制"}

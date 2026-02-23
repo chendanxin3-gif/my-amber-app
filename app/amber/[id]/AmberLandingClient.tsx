@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import BgmPlayer from "@/app/components/BgmPlayer";
 
 interface Props {
   profileId: string;
@@ -109,6 +110,9 @@ export default function AmberLandingClient({
           </span>
         </div>
       </div>
+
+      {/* 背景音乐控制器 */}
+      <BgmPlayer />
 
       {/* ── 第二幕：规则说明 ── */}
       <div

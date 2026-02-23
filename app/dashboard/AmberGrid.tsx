@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 
-const AMBER_BORDER = "rgba(212,175,55,0.25)";
+const GOLD_BORDER = "rgba(139,115,85,0.2)";
 
 function ImageLightbox({
   src,
@@ -22,16 +22,15 @@ function ImageLightbox({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center"
-      style={{ background: "rgba(0,0,0,0.88)", backdropFilter: "blur(8px)" }}
+      style={{ background: "rgba(245,240,232,0.92)", backdropFilter: "blur(12px)" }}
       onClick={onClose}
     >
-      {/* 关闭按钮 */}
       <button
         className="absolute top-6 right-6 flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300"
         style={{
-          border: "1px solid rgba(212,175,55,0.35)",
-          background: "rgba(255,255,255,0.04)",
-          color: "rgba(212,175,55,0.7)",
+          border: "1px solid rgba(139,115,85,0.3)",
+          background: "rgba(245,240,232,0.8)",
+          color: "rgba(139,115,85,0.7)",
           cursor: "pointer",
         }}
         onClick={onClose}
@@ -45,8 +44,6 @@ function ImageLightbox({
           />
         </svg>
       </button>
-
-      {/* 图片（点击图片本身不关闭，只点击背景关闭） */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
@@ -58,8 +55,8 @@ function ImageLightbox({
           width: "auto",
           height: "auto",
           objectFit: "contain",
-          borderRadius: "4px",
-          boxShadow: "0 0 60px rgba(0,0,0,0.6)",
+          borderRadius: "2px",
+          boxShadow: "0 8px 60px rgba(26,20,16,0.15)",
         }}
         onClick={(e) => e.stopPropagation()}
       />
@@ -93,14 +90,22 @@ function QuoteBlock({
     <div className="mb-5 last:mb-0">
       <p
         className="text-xs tracking-widest mb-2"
-        style={{ color: "rgba(212,175,55,0.45)" }}
+        style={{
+          fontFamily: "var(--font-noto-sans-sc), sans-serif",
+          fontWeight: 300,
+          color: "rgba(139,115,85,0.6)",
+          letterSpacing: "0.18em",
+        }}
       >
         {label}
       </p>
       <p
         className="text-sm leading-loose"
         style={{
-          color: muted ? "rgba(232,224,208,0.5)" : "rgba(232,224,208,0.75)",
+          fontFamily: "var(--font-noto-sans-sc), sans-serif",
+          fontWeight: 300,
+          color: muted ? "rgba(26,20,16,0.45)" : "rgba(26,20,16,0.7)",
+          letterSpacing: "0.03em",
         }}
       >
         {content}
@@ -124,41 +129,47 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
     <div
       className="relative flex flex-col break-inside-avoid mb-6"
       style={{
-        background: "rgba(255,255,255,0.025)",
+        background: "rgba(245,240,232,0.72)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
-        border: `1px solid ${AMBER_BORDER}`,
-        borderRadius: "4px",
+        border: `1px solid ${GOLD_BORDER}`,
+        borderRadius: "2px",
         padding: "28px 28px 24px",
         boxShadow:
-          "0 0 0 1px rgba(0,0,0,0.6), 0 0 40px rgba(212,175,55,0.04), inset 0 0 20px rgba(212,175,55,0.02)",
+          "0 2px 24px rgba(139,115,85,0.06), 0 1px 0 rgba(255,255,255,0.7) inset",
       }}
     >
       {/* 右上角装饰角标 */}
       <div
-        className="absolute top-0 right-0 w-6 h-6"
+        className="absolute top-0 right-0 w-5 h-5"
         style={{
-          borderTop: "1px solid rgba(212,175,55,0.3)",
-          borderRight: "1px solid rgba(212,175,55,0.3)",
-          borderTopRightRadius: "4px",
+          borderTop: "1px solid rgba(139,115,85,0.25)",
+          borderRight: "1px solid rgba(139,115,85,0.25)",
+          borderTopRightRadius: "2px",
         }}
       />
 
-      {/* 卡片头：署名 + 日期 + 图片标记 */}
+      {/* 卡片头 */}
       <div className="flex items-start justify-between mb-6">
         <div>
           <p
             className="text-base tracking-wider mb-1"
             style={{
-              fontFamily: "var(--font-lora), Georgia, serif",
-              color: "#e8e0d0",
+              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontWeight: 400,
+              color: "rgba(26,20,16,0.82)",
             }}
           >
             {entry.author_name}
           </p>
           <p
             className="text-xs tracking-widest"
-            style={{ color: "rgba(212,175,55,0.4)" }}
+            style={{
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 300,
+              color: "rgba(139,115,85,0.55)",
+              letterSpacing: "0.14em",
+            }}
           >
             {dateStr}
           </p>
@@ -166,7 +177,7 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
         {entry.image_url && (
           <div
             className="flex items-center justify-center w-7 h-7 rounded-full shrink-0"
-            style={{ border: `1px solid ${AMBER_BORDER}` }}
+            style={{ border: `1px solid ${GOLD_BORDER}` }}
             title="含有照片"
           >
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
@@ -176,19 +187,19 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
                 width="12"
                 height="10"
                 rx="1"
-                stroke="rgba(212,175,55,0.5)"
+                stroke="rgba(139,115,85,0.5)"
                 strokeWidth="1"
               />
               <circle
                 cx="5.5"
                 cy="6.5"
                 r="1.2"
-                stroke="rgba(212,175,55,0.5)"
+                stroke="rgba(139,115,85,0.5)"
                 strokeWidth="1"
               />
               <path
                 d="M2 11l3.5-3 2.5 2.5 2-2.5 4 3.5"
-                stroke="rgba(212,175,55,0.5)"
+                stroke="rgba(139,115,85,0.5)"
                 strokeWidth="1"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -198,7 +209,7 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
         )}
       </div>
 
-      {/* 照片缩略图（点击放大） */}
+      {/* 照片缩略图 */}
       {entry.image_url && (
         <>
           <div
@@ -213,16 +224,16 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
               alt="关系照片"
               className="w-full h-auto block"
               style={{
-                opacity: 0.75,
+                opacity: 0.8,
                 objectFit: "contain",
                 maxHeight: "180px",
                 transition: "opacity 300ms ease-out",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLImageElement).style.opacity = "0.95";
+                (e.currentTarget as HTMLImageElement).style.opacity = "1";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLImageElement).style.opacity = "0.75";
+                (e.currentTarget as HTMLImageElement).style.opacity = "0.8";
               }}
             />
           </div>
@@ -232,13 +243,15 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
         </>
       )}
 
-      {/* 三个词——主题词 */}
+      {/* 三个词 */}
       <div className="mb-6">
         <p
           className="text-lg tracking-widest"
           style={{
-            fontFamily: "var(--font-lora), Georgia, serif",
-            color: "rgba(212,175,55,0.85)",
+            fontFamily: "var(--font-noto-serif-sc), serif",
+            fontWeight: 400,
+            color: "rgba(139,115,85,0.85)",
+            letterSpacing: "0.2em",
           }}
         >
           {entry.q1_three_words}
@@ -248,40 +261,37 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
       {/* 分割线 */}
       <div
         className="mb-6 h-px"
-        style={{ background: "rgba(255,255,255,0.05)" }}
+        style={{ background: "rgba(26,20,16,0.06)" }}
       />
 
       {/* 必填内容 */}
       <QuoteBlock label="印象变迁" content={entry.q2_impression_change} />
       <QuoteBlock label="天赋感知" content={entry.q3_talent} />
 
-      {/* 选填内容（仅在有内容时渲染） */}
+      {/* 选填内容 */}
       {(entry.q4_blind_spot || entry.q5_influence || entry.q6_message) && (
         <>
           <div
             className="mt-5 mb-5 h-px"
-            style={{ background: "rgba(255,255,255,0.04)" }}
+            style={{ background: "rgba(26,20,16,0.05)" }}
           />
           {entry.q4_blind_spot && (
             <QuoteBlock label="我的盲点" content={entry.q4_blind_spot} muted />
           )}
           {entry.q5_influence && (
-            <QuoteBlock
-              label="悄然的影响"
-              content={entry.q5_influence}
-              muted
-            />
+            <QuoteBlock label="悄然的影响" content={entry.q5_influence} muted />
           )}
           {entry.q6_message && (
             <div
               className="mt-5 pt-5"
-              style={{ borderTop: "1px solid rgba(212,175,55,0.1)" }}
+              style={{ borderTop: "1px solid rgba(139,115,85,0.12)" }}
             >
               <p
                 className="text-sm leading-loose italic"
                 style={{
-                  fontFamily: "var(--font-lora), Georgia, serif",
-                  color: "rgba(212,175,55,0.65)",
+                  fontFamily: "var(--font-noto-serif-sc), serif",
+                  fontWeight: 300,
+                  color: "rgba(139,115,85,0.75)",
                 }}
               >
                 「{entry.q6_message}」
@@ -300,7 +310,12 @@ export default function AmberGrid({ ambers }: { ambers: AmberEntry[] }) {
       <div className="px-6 md:px-16 pt-16 pb-24 text-center">
         <p
           className="text-sm tracking-widest"
-          style={{ color: "rgba(232,224,208,0.2)" }}
+          style={{
+            fontFamily: "var(--font-noto-sans-sc), sans-serif",
+            fontWeight: 300,
+            color: "rgba(26,20,16,0.2)",
+            letterSpacing: "0.18em",
+          }}
         >
           还没有琥珀。分享你的专属链接，邀请第一位见证者。
         </p>
@@ -312,16 +327,17 @@ export default function AmberGrid({ ambers }: { ambers: AmberEntry[] }) {
     <div className="relative px-6 md:px-16 pt-10 pb-24">
       <p
         className="text-xs tracking-widest mb-8"
-        style={{ color: "rgba(212,175,55,0.4)" }}
+        style={{
+          fontFamily: "var(--font-noto-sans-sc), sans-serif",
+          fontWeight: 300,
+          color: "rgba(139,115,85,0.5)",
+          letterSpacing: "0.2em",
+        }}
       >
         琥珀收集箱
       </p>
-      {/* CSS columns 瀑布流，兼容性最佳 */}
       <div
-        style={{
-          columns: "1",
-          columnGap: "24px",
-        }}
+        style={{ columns: "1", columnGap: "24px" }}
         className="md:[columns:2] xl:[columns:3]"
       >
         {ambers.map((entry) => (

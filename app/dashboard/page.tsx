@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import DashboardTabs from "./DashboardTabs";
 import LogoutButton from "./LogoutButton";
+import InkBackground from "@/app/components/InkBackground";
+import BgmPlayer from "@/app/components/BgmPlayer";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -13,21 +15,18 @@ export default async function DashboardPage() {
 
   if (!user) redirect("/");
 
-  // 读取 profile
   const { data: profile } = await supabase
     .from("profiles")
     .select("full_name, custom_intro")
     .eq("id", user.id)
     .single();
 
-  // 读取该用户收到的所有 ambers
   const { data: ambers } = await supabase
     .from("ambers")
     .select("*")
     .eq("profile_id", user.id)
     .order("created_at", { ascending: false });
 
-  // 动态获取域名，不依赖环境变量
   const headersList = await headers();
   const host = headersList.get("x-forwarded-host") ?? headersList.get("host") ?? "localhost:3000";
   const protocol = headersList.get("x-forwarded-proto") ?? "http";
@@ -35,59 +34,71 @@ export default async function DashboardPage() {
   const shareUrl = `${origin}/amber/${user.id}`;
 
   return (
-    <main className="min-h-screen w-full" style={{ background: "#0a0a0a" }}>
-      {/* 背景光晕 */}
-      <div
-        className="pointer-events-none fixed inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 40% at 50% 0%, rgba(212,175,55,0.03) 0%, transparent 60%)",
-        }}
-      />
+    <main className="relative min-h-screen w-full" style={{ background: "#f5f0e8" }}>
+      {/* 水墨晕染背景 */}
+      <InkBackground />
 
-      {/* 顶部标题区 */}
-      <header className="relative px-6 md:px-16 pt-14 pb-8">
-        <div className="flex items-start justify-between">
-          <div>
-            <p
-              className="text-xs tracking-widest mb-4"
-              style={{ color: "rgba(212,175,55,0.4)" }}
-            >
-              私人视角 · 他者之镜
-            </p>
-            <h1
-              className="text-2xl md:text-4xl tracking-widest"
-              style={{
-                fontFamily: "var(--font-lora), Georgia, serif",
-                color: "#e8e0d0",
-              }}
-            >
-              万物见我
-            </h1>
+      {/* 背景音乐控制器 */}
+      <BgmPlayer />
+
+      {/* 内容层，relative z-1 覆盖背景 */}
+      <div className="relative" style={{ zIndex: 1 }}>
+        {/* 顶部标题区 */}
+        <header className="px-6 md:px-16 pt-14 pb-8">
+          <div className="flex items-start justify-between">
+            <div>
+              <p
+                className="text-xs tracking-widest mb-4"
+                style={{
+                  fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                  fontWeight: 300,
+                  color: "rgba(139,115,85,0.6)",
+                  letterSpacing: "0.2em",
+                }}
+              >
+                私人视角 · 他者之镜
+              </p>
+              <h1
+                className="tracking-widest"
+                style={{
+                  fontFamily: "var(--font-noto-serif-sc), serif",
+                  fontWeight: 300,
+                  fontSize: "clamp(1.4rem, 3.5vw, 2.4rem)",
+                  color: "rgba(26,20,16,0.82)",
+                  letterSpacing: "0.2em",
+                }}
+              >
+                萬物見我
+              </h1>
+            </div>
+            <LogoutButton />
           </div>
-          {/* 退出登录移至右上角 */}
-          <LogoutButton />
-        </div>
-      </header>
+        </header>
 
-      {/* Tab 选项卡区域 */}
-      <DashboardTabs
-        userId={user.id}
-        initialFullName={profile?.full_name ?? ""}
-        initialCustomIntro={profile?.custom_intro ?? ""}
-        shareUrl={shareUrl}
-        ambers={ambers ?? []}
-      />
+        {/* Tab 区域 */}
+        <DashboardTabs
+          userId={user.id}
+          initialFullName={profile?.full_name ?? ""}
+          initialCustomIntro={profile?.custom_intro ?? ""}
+          shareUrl={shareUrl}
+          ambers={ambers ?? []}
+        />
 
-      {/* 底部水印 */}
-      <footer className="px-6 md:px-16 pb-10 pt-6 text-center">
-        <p
-          className="text-xs tracking-widest"
-          style={{ color: "rgba(212,175,55,0.15)" }}
-        >
-          万物见我 · 一期一会 · Amber of Relationships
-        </p>
-      </footer>
+        {/* 底部水印 */}
+        <footer className="px-6 md:px-16 pb-12 pt-6 text-center">
+          <p
+            className="text-xs tracking-widest"
+            style={{
+              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontWeight: 300,
+              color: "rgba(139,115,85,0.25)",
+              letterSpacing: "0.2em",
+            }}
+          >
+            萬物見我 · 一期一會 · Amber of Relationships
+          </p>
+        </footer>
+      </div>
     </main>
   );
 }

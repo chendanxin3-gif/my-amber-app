@@ -1,19 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #e8e0d0;
-  --amber: #D4AF37;
-  --amber-glow: rgba(212, 175, 55, 0.15);
-  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --background: #f5f0e8;
+  --foreground: #1a1410;
+  --ink: #1a1410;
+  --ink-light: #6b5c4e;
+  --ink-faint: rgba(26, 20, 16, 0.35);
+  --gold: #8b7355;
+  --gold-border: rgba(139, 115, 85, 0.3);
+  --gold-glow: rgba(139, 115, 85, 0.12);
+  --paper: #f5f0e8;
+  --paper-warm: #ede8de;
+  --font-serif: var(--font-noto-serif-sc), "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --font-sans: var(--font-noto-sans-sc), "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
 }
 
@@ -28,20 +35,20 @@ body {
 
 /* 自定义滚动条 */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #ede8de;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 55, 0.2);
+  background: rgba(139, 115, 85, 0.25);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 175, 55, 0.4);
+  background: rgba(139, 115, 85, 0.45);
 }
 
 /* 全局 Textarea / Input 焦点重置 */
@@ -52,40 +59,59 @@ input:focus {
 
 /* 文字选中颜色 */
 ::selection {
-  background: rgba(212, 175, 55, 0.25);
+  background: rgba(139, 115, 85, 0.2);
   color: var(--foreground);
 }
 
-/* pulse 呼吸动画关键帧（供首页和引导页使用） */
+/* ── 动画关键帧 ── */
+
+/* 呼吸 pulse */
 @keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.35;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
-/* spin 旋转动画关键帧（加载状态） */
+/* 旋转 spin（加载状态）*/
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* fadeIn 淡入动画 */
+/* 淡入上移 */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 水墨扩散 — 径向放大 + 透明度起伏 */
+@keyframes inkSpread {
+  0%   { transform: scale(0.6) translate(0, 0);   opacity: 0; }
+  20%  { opacity: 1; }
+  60%  { transform: scale(1.1) translate(2%, 1%); opacity: 0.85; }
+  100% { transform: scale(1.0) translate(0, 0);   opacity: 0.7; }
+}
+
+/* 水墨漂移 — 非常缓慢的形变游走 */
+@keyframes inkDrift {
+  0%   { transform: scale(1.0) translate(0, 0)      rotate(0deg); }
+  25%  { transform: scale(1.05) translate(1%, -1%)  rotate(0.5deg); }
+  50%  { transform: scale(0.97) translate(-1%, 1%)  rotate(-0.3deg); }
+  75%  { transform: scale(1.03) translate(0.5%, 0%) rotate(0.2deg); }
+  100% { transform: scale(1.0) translate(0, 0)      rotate(0deg); }
+}
+
+/* 笔触延伸 — stroke-dashoffset 从全长 → 0 */
+@keyframes brushStroke {
+  0%   { stroke-dashoffset: var(--stroke-len, 600); opacity: 0; }
+  5%   { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0.4; }
+}
+
+/* 笔触渐隐循环 */
+@keyframes brushFade {
+  0%, 60% { opacity: 0.4; }
+  80%     { opacity: 0; }
+  100%    { opacity: 0; }
 }
 
 .animate-pulse {
