@@ -49,15 +49,17 @@ export default function AmberLandingClient({
       >
         <div className="max-w-2xl w-full">
           <p
-            className="leading-loose text-lg md:text-xl mb-8"
+            className="leading-loose mb-8"
             style={{
               fontFamily: "var(--font-noto-serif-sc), serif",
+              fontSize: "clamp(1.5rem, 3vw, 1.875rem)",
+              fontWeight: 600,
               color: "rgba(38,34,32,0.82)",
               letterSpacing: "0.04em",
             }}
           >
             我是{" "}
-            <span style={{ color: "#262220", fontWeight: 400 }}>{fullName}</span>。
+            <span style={{ color: "#262220", fontWeight: 600 }}>{fullName}</span>。
           </p>
           <p
             className="leading-loose text-lg md:text-xl mb-8"
