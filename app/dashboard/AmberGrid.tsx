@@ -1,6 +1,71 @@
 "use client";
 
+import { useState, useCallback, useEffect } from "react";
+
 const AMBER_BORDER = "rgba(212,175,55,0.25)";
+
+function ImageLightbox({
+  src,
+  onClose,
+}: {
+  src: string;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      style={{ background: "rgba(0,0,0,0.88)", backdropFilter: "blur(8px)" }}
+      onClick={onClose}
+    >
+      {/* 关闭按钮 */}
+      <button
+        className="absolute top-6 right-6 flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300"
+        style={{
+          border: "1px solid rgba(212,175,55,0.35)",
+          background: "rgba(255,255,255,0.04)",
+          color: "rgba(212,175,55,0.7)",
+          cursor: "pointer",
+        }}
+        onClick={onClose}
+      >
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path
+            d="M1 1l12 12M13 1L1 13"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+          />
+        </svg>
+      </button>
+
+      {/* 图片（点击图片本身不关闭，只点击背景关闭） */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt="关系照片（放大）"
+        className="block"
+        style={{
+          maxWidth: "90vw",
+          maxHeight: "88vh",
+          width: "auto",
+          height: "auto",
+          objectFit: "contain",
+          borderRadius: "4px",
+          boxShadow: "0 0 60px rgba(0,0,0,0.6)",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      />
+    </div>
+  );
+}
 
 interface AmberEntry {
   id: string;
@@ -45,6 +110,10 @@ function QuoteBlock({
 }
 
 function AmberCard({ entry }: { entry: AmberEntry }) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const handleOpenLightbox = useCallback(() => setLightboxOpen(true), []);
+  const handleCloseLightbox = useCallback(() => setLightboxOpen(false), []);
+
   const dateStr = new Date(entry.created_at).toLocaleDateString("zh-CN", {
     year: "numeric",
     month: "long",
@@ -129,20 +198,38 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
         )}
       </div>
 
-      {/* 照片预览 */}
+      {/* 照片缩略图（点击放大） */}
       {entry.image_url && (
-        <div
-          className="mb-6 overflow-hidden rounded"
-          style={{ maxHeight: "200px" }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={entry.image_url}
-            alt="关系照片"
-            className="w-full object-cover"
-            style={{ opacity: 0.75 }}
-          />
-        </div>
+        <>
+          <div
+            className="mb-6 rounded overflow-hidden cursor-zoom-in"
+            style={{ maxHeight: "180px" }}
+            onClick={handleOpenLightbox}
+            title="点击查看完整照片"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={entry.image_url}
+              alt="关系照片"
+              className="w-full h-auto block"
+              style={{
+                opacity: 0.75,
+                objectFit: "contain",
+                maxHeight: "180px",
+                transition: "opacity 300ms ease-out",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLImageElement).style.opacity = "0.95";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLImageElement).style.opacity = "0.75";
+              }}
+            />
+          </div>
+          {lightboxOpen && (
+            <ImageLightbox src={entry.image_url} onClose={handleCloseLightbox} />
+          )}
+        </>
       )}
 
       {/* 三个词——主题词 */}
