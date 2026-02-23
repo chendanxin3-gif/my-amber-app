@@ -162,9 +162,9 @@ export default function LandingPage() {
             className="leading-loose"
             style={{
               fontFamily: "var(--font-noto-serif-sc), serif",
-              fontWeight: 300,
-              fontSize: "clamp(0.82rem, 1.5vw, 0.95rem)",
-              color: "rgba(38,34,32,0.55)",
+              fontWeight: 500,
+              fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)",
+              color: "rgba(38,34,32,0.72)",
               letterSpacing: "0.04em",
             }}
           >
@@ -175,9 +175,9 @@ export default function LandingPage() {
             className="mt-7 leading-loose"
             style={{
               fontFamily: "var(--font-noto-serif-sc), serif",
-              fontWeight: 300,
-              fontSize: "clamp(0.82rem, 1.5vw, 0.95rem)",
-              color: "rgba(38,34,32,0.55)",
+              fontWeight: 400,
+              fontSize: "clamp(0.88rem, 1.6vw, 1.02rem)",
+              color: "rgba(38,34,32,0.62)",
               letterSpacing: "0.04em",
             }}
           >
@@ -188,9 +188,9 @@ export default function LandingPage() {
             className="mt-7 leading-loose"
             style={{
               fontFamily: "var(--font-noto-serif-sc), serif",
-              fontWeight: 300,
-              fontSize: "clamp(0.82rem, 1.5vw, 0.95rem)",
-              color: "rgba(38,34,32,0.55)",
+              fontWeight: 400,
+              fontSize: "clamp(0.88rem, 1.6vw, 1.02rem)",
+              color: "rgba(38,34,32,0.62)",
               letterSpacing: "0.04em",
             }}
           >
