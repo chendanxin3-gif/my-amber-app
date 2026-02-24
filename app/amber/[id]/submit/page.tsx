@@ -166,9 +166,7 @@ export default function SubmitPage({ params }: PageProps) {
           style={{
             position: "relative",
             zIndex: 1,
-            background: "rgba(255,255,255,0.60)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
+            background: "rgba(255,255,255,0.80)",
             border: `1px solid ${AMBER_BORDER}`,
             borderRadius: "4px",
             padding: "56px 48px",
@@ -550,7 +548,6 @@ export default function SubmitPage({ params }: PageProps) {
               border: "1px dashed rgba(139,115,85,0.25)",
               borderRadius: "4px",
               background: "rgba(255,255,255,0.50)",
-              backdropFilter: "blur(8px)",
             }}
             onClick={() => fileInputRef.current?.click()}
             onMouseEnter={(e) => {
@@ -706,7 +703,6 @@ export default function SubmitPage({ params }: PageProps) {
               background: isReady
                 ? "rgba(255,255,255,0.55)"
                 : "transparent",
-              backdropFilter: "blur(12px)",
               cursor: isReady ? "pointer" : "not-allowed",
               letterSpacing: "0.2em",
             }}

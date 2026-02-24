@@ -185,8 +185,6 @@ export default function AmberLandingClient({
               border: "1px solid rgba(139,115,85,0.3)",
               borderRadius: "2px",
               background: "rgba(255,255,255,0.55)",
-              backdropFilter: "blur(12px)",
-              WebkitBackdropFilter: "blur(12px)",
               letterSpacing: "0.2em",
               boxShadow: "0 2px 24px rgba(139,115,85,0.06)",
               cursor: "pointer",

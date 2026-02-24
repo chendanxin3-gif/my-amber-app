@@ -32,7 +32,7 @@ export default function BgmPlayer() {
   // 初始化 audio 元素
   useEffect(() => {
     const audio = new Audio(PLAYLIST[0]);
-    audio.preload = "auto";
+    audio.preload = "none";
     audio.addEventListener("ended", handleEnded);
     audioRef.current = audio;
 

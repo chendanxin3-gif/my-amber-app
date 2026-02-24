@@ -99,14 +99,6 @@ input:focus {
   100% { transform: scale(1.0) translate(0, 0);   opacity: 0.7; }
 }
 
-/* 水墨漂移 — 非常缓慢的形变游走 */
-@keyframes inkDrift {
-  0%   { transform: scale(1.0) translate(0, 0)      rotate(0deg); }
-  25%  { transform: scale(1.05) translate(1%, -1%)  rotate(0.5deg); }
-  50%  { transform: scale(0.97) translate(-1%, 1%)  rotate(-0.3deg); }
-  75%  { transform: scale(1.03) translate(0.5%, 0%) rotate(0.2deg); }
-  100% { transform: scale(1.0) translate(0, 0)      rotate(0deg); }
-}
 
 /* 笔触延伸 — stroke-dashoffset 从全长 → 0 */
 @keyframes brushStroke {
