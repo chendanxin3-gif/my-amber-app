@@ -91,7 +91,7 @@ function QuoteBlock({
       <p
         className="text-xs tracking-widest mb-2"
         style={{
-          fontFamily: "var(--font-noto-sans-sc), sans-serif",
+          fontFamily: '"PingFangShiGuang", serif',
           fontWeight: 300,
           color: "rgba(139,115,85,0.6)",
           letterSpacing: "0.18em",
@@ -102,7 +102,7 @@ function QuoteBlock({
       <p
         className="text-sm leading-loose"
         style={{
-          fontFamily: "var(--font-noto-sans-sc), sans-serif",
+          fontFamily: '"PingFangShiGuang", serif',
           fontWeight: 300,
           color: muted ? "rgba(38,34,32,0.45)" : "rgba(38,34,32,0.7)",
           letterSpacing: "0.03em",
@@ -155,7 +155,7 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
           <p
             className="text-base tracking-wider mb-1"
             style={{
-              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 400,
               color: "rgba(38,34,32,0.82)",
             }}
@@ -165,7 +165,7 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
           <p
             className="text-xs tracking-widest"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 300,
               color: "rgba(139,115,85,0.55)",
               letterSpacing: "0.14em",
@@ -248,7 +248,7 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
         <p
           className="text-lg tracking-widest"
           style={{
-            fontFamily: "var(--font-noto-serif-sc), serif",
+            fontFamily: '"PingFangShiGuang", serif',
             fontWeight: 400,
               color: "rgba(139,115,85,0.85)",
             letterSpacing: "0.2em",
@@ -289,7 +289,7 @@ function AmberCard({ entry }: { entry: AmberEntry }) {
               <p
                 className="text-sm leading-loose italic"
                 style={{
-                  fontFamily: "var(--font-noto-serif-sc), serif",
+                  fontFamily: '"PingFangShiGuang", serif',
                   fontWeight: 300,
                   color: "rgba(139,115,85,0.75)",
                 }}
@@ -311,7 +311,7 @@ export default function AmberGrid({ ambers }: { ambers: AmberEntry[] }) {
         <p
           className="text-sm tracking-widest"
           style={{
-            fontFamily: "var(--font-noto-sans-sc), sans-serif",
+            fontFamily: '"PingFangShiGuang", serif',
             fontWeight: 300,
               color: "rgba(38,34,32,0.2)",
             letterSpacing: "0.18em",
@@ -328,7 +328,7 @@ export default function AmberGrid({ ambers }: { ambers: AmberEntry[] }) {
       <p
         className="text-xs tracking-widest mb-8"
         style={{
-          fontFamily: "var(--font-noto-sans-sc), sans-serif",
+          fontFamily: '"PingFangShiGuang", serif',
           fontWeight: 300,
           color: "rgba(139,115,85,0.5)",
           letterSpacing: "0.2em",

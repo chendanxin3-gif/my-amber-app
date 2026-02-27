@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useRef, use } from "react";
+import { useState, useRef, use, useReducer } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import InkBackground from "@/app/components/InkBackground";
+
+const supabase = createClient();
 
 const AMBER = "#8b7355";
 const AMBER_BORDER = "rgba(139,115,85,0.3)";
@@ -13,7 +15,7 @@ const inputBase: React.CSSProperties = {
   background: "transparent",
   border: "none",
   color: "#262220",
-  fontFamily: "var(--font-noto-sans-sc), sans-serif",
+  fontFamily: '"PingFangShiGuang", serif',
   fontSize: "1.15rem",
   lineHeight: "1.9",
   padding: "8px 0",
@@ -87,24 +89,42 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
+type FormState = {
+  q1: string;
+  q2: string;
+  q3: string;
+  q4: string;
+  q5: string;
+  q6: string;
+  authorName: string;
+};
+
+const initialForm: FormState = {
+  q1: "",
+  q2: "",
+  q3: "",
+  q4: "",
+  q5: "",
+  q6: "",
+  authorName: "",
+};
+
+function formReducer(state: FormState, action: { field: keyof FormState; value: string }): FormState {
+  return { ...state, [action.field]: action.value };
+}
+
 export default function SubmitPage({ params }: PageProps) {
   const { id: profileId } = use(params);
-  const supabase = createClient();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const [q1, setQ1] = useState("");
-  const [q2, setQ2] = useState("");
-  const [q3, setQ3] = useState("");
-  const [q4, setQ4] = useState("");
-  const [q5, setQ5] = useState("");
-  const [q6, setQ6] = useState("");
-  const [authorName, setAuthorName] = useState("");
+  const [form, dispatchForm] = useReducer(formReducer, initialForm);
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [photoName, setPhotoName] = useState<string | null>(null);
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const isReady = q1.trim() && q2.trim() && q3.trim() && authorName.trim();
+  const isReady =
+    form.q1.trim() && form.q2.trim() && form.q3.trim() && form.authorName.trim();
 
   const handleSubmit = async () => {
     if (!isReady) return;
@@ -134,14 +154,14 @@ export default function SubmitPage({ params }: PageProps) {
 
     const { error: insertError } = await supabase.from("ambers").insert({
       profile_id: profileId,
-      q1_three_words: q1.trim(),
-      q2_impression_change: q2.trim(),
-      q3_talent: q3.trim(),
-      q4_blind_spot: q4.trim() || null,
-      q5_influence: q5.trim() || null,
-      q6_message: q6.trim() || null,
+      q1_three_words: form.q1.trim(),
+      q2_impression_change: form.q2.trim(),
+      q3_talent: form.q3.trim(),
+      q4_blind_spot: form.q4.trim() || null,
+      q5_influence: form.q5.trim() || null,
+      q6_message: form.q6.trim() || null,
       image_url: imageUrl,
-      author_name: authorName.trim(),
+      author_name: form.authorName.trim(),
     });
 
     if (insertError) {
@@ -209,7 +229,7 @@ export default function SubmitPage({ params }: PageProps) {
           <p
             className="text-lg leading-loose mb-10"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               color: "rgba(38,34,32,0.7)",
             }}
           >
@@ -228,7 +248,7 @@ export default function SubmitPage({ params }: PageProps) {
           <p
             className="text-lg leading-relaxed mb-6"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               color: "rgba(38,34,32,0.55)",
             }}
           >
@@ -239,7 +259,7 @@ export default function SubmitPage({ params }: PageProps) {
             href="/"
             className="inline-block px-8 py-3 text-lg tracking-widest transition-all duration-700 ease-out"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 600,
               color: "rgba(139,115,85,0.9)",
               border: `1px solid ${AMBER_BORDER}`,
@@ -267,7 +287,7 @@ export default function SubmitPage({ params }: PageProps) {
           className="text-lg tracking-widest font-semibold"
           style={{
             color: "rgba(139,115,85,0.65)",
-            fontFamily: "var(--font-noto-sans-sc), sans-serif",
+            fontFamily: '"PingFangShiGuang", serif',
           }}
         >
           ← 返回
@@ -290,7 +310,7 @@ export default function SubmitPage({ params }: PageProps) {
           <p
             className="text-lg leading-relaxed"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               color: "rgba(38,34,32,0.6)",
             }}
           >
@@ -304,7 +324,7 @@ export default function SubmitPage({ params }: PageProps) {
             <span
               className="text-lg tracking-widest"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 500,
                 color: "rgba(139,115,85,0.75)",
               }}
@@ -322,7 +342,7 @@ export default function SubmitPage({ params }: PageProps) {
             <label
               className="block text-lg tracking-widest mb-5"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 500,
                 color: "rgba(38,34,32,0.65)",
               }}
@@ -332,7 +352,7 @@ export default function SubmitPage({ params }: PageProps) {
             <p
               className="text-lg mb-4"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 color: "rgba(38,34,32,0.82)",
               }}
             >
@@ -340,8 +360,8 @@ export default function SubmitPage({ params }: PageProps) {
             </p>
             <AmberTextarea
               placeholder="第一个词 / 第二个词 / 第三个词"
-              value={q1}
-              onChange={setQ1}
+              value={form.q1}
+              onChange={(v) => dispatchForm({ field: "q1", value: v })}
               rows={2}
             />
           </div>
@@ -351,7 +371,7 @@ export default function SubmitPage({ params }: PageProps) {
             <label
               className="block text-lg tracking-widest mb-5"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 500,
                 color: "rgba(38,34,32,0.65)",
               }}
@@ -361,7 +381,7 @@ export default function SubmitPage({ params }: PageProps) {
             <p
               className="text-lg mb-4"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 color: "rgba(38,34,32,0.82)",
               }}
             >
@@ -369,8 +389,8 @@ export default function SubmitPage({ params }: PageProps) {
             </p>
             <AmberTextarea
               placeholder="起初我以为…而现在…"
-              value={q2}
-              onChange={setQ2}
+              value={form.q2}
+              onChange={(v) => dispatchForm({ field: "q2", value: v })}
               rows={4}
             />
           </div>
@@ -380,7 +400,7 @@ export default function SubmitPage({ params }: PageProps) {
             <label
               className="block text-lg tracking-widest mb-5"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 500,
                 color: "rgba(38,34,32,0.65)",
               }}
@@ -390,7 +410,7 @@ export default function SubmitPage({ params }: PageProps) {
             <p
               className="text-lg mb-4"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 color: "rgba(38,34,32,0.82)",
               }}
             >
@@ -398,8 +418,8 @@ export default function SubmitPage({ params }: PageProps) {
             </p>
             <AmberTextarea
               placeholder="你擅长的，可能是你最习以为常的…"
-              value={q3}
-              onChange={setQ3}
+              value={form.q3}
+              onChange={(v) => dispatchForm({ field: "q3", value: v })}
               rows={4}
             />
           </div>
@@ -411,7 +431,7 @@ export default function SubmitPage({ params }: PageProps) {
             <span
               className="text-lg tracking-widest"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 400,
                 color: "rgba(38,34,32,0.5)",
               }}
@@ -429,7 +449,7 @@ export default function SubmitPage({ params }: PageProps) {
             <label
               className="block text-lg tracking-widest mb-5"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 400,
                 color: "rgba(38,34,32,0.5)",
               }}
@@ -439,7 +459,7 @@ export default function SubmitPage({ params }: PageProps) {
             <p
               className="text-lg mb-4"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 color: "rgba(38,34,32,0.72)",
               }}
             >
@@ -447,8 +467,8 @@ export default function SubmitPage({ params }: PageProps) {
             </p>
             <AmberTextarea
               placeholder="这只是一个观察，无需评判…"
-              value={q4}
-              onChange={setQ4}
+              value={form.q4}
+              onChange={(v) => dispatchForm({ field: "q4", value: v })}
               rows={4}
             />
           </div>
@@ -458,7 +478,7 @@ export default function SubmitPage({ params }: PageProps) {
             <label
               className="block text-lg tracking-widest mb-5"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 400,
                 color: "rgba(38,34,32,0.5)",
               }}
@@ -468,7 +488,7 @@ export default function SubmitPage({ params }: PageProps) {
             <p
               className="text-lg mb-4"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 color: "rgba(38,34,32,0.72)",
               }}
             >
@@ -476,8 +496,8 @@ export default function SubmitPage({ params }: PageProps) {
             </p>
             <AmberTextarea
               placeholder="有时候影响力悄无声息地发生…"
-              value={q5}
-              onChange={setQ5}
+              value={form.q5}
+              onChange={(v) => dispatchForm({ field: "q5", value: v })}
               rows={4}
             />
           </div>
@@ -487,7 +507,7 @@ export default function SubmitPage({ params }: PageProps) {
             <label
               className="block text-lg tracking-widest mb-5"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 400,
                 color: "rgba(38,34,32,0.5)",
               }}
@@ -497,7 +517,7 @@ export default function SubmitPage({ params }: PageProps) {
             <p
               className="text-lg mb-4"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 color: "rgba(38,34,32,0.72)",
               }}
             >
@@ -505,8 +525,8 @@ export default function SubmitPage({ params }: PageProps) {
             </p>
             <AmberTextarea
               placeholder="此刻是最合适的时机…"
-              value={q6}
-              onChange={setQ6}
+              value={form.q6}
+              onChange={(v) => dispatchForm({ field: "q6", value: v })}
               rows={3}
             />
           </div>
@@ -518,7 +538,7 @@ export default function SubmitPage({ params }: PageProps) {
             <span
               className="text-lg tracking-widest"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 400,
                 color: "rgba(38,34,32,0.5)",
               }}
@@ -534,7 +554,7 @@ export default function SubmitPage({ params }: PageProps) {
           <p
             className="text-lg mb-6"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               color: "rgba(38,34,32,0.65)",
             }}
           >
@@ -636,7 +656,7 @@ export default function SubmitPage({ params }: PageProps) {
                 <span
                   className="text-base tracking-wider"
                   style={{
-                    fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                    fontFamily: '"PingFangShiGuang", serif',
                     color: "rgba(38,34,32,0.45)",
                   }}
                 >
@@ -658,7 +678,7 @@ export default function SubmitPage({ params }: PageProps) {
             <label
               className="block text-lg tracking-widest mb-4"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 500,
                 color: "rgba(38,34,32,0.65)",
               }}
@@ -668,8 +688,8 @@ export default function SubmitPage({ params }: PageProps) {
             </label>
             <AmberInput
               placeholder="你希望 TA 如何称呼你"
-              value={authorName}
-              onChange={setAuthorName}
+              value={form.authorName}
+              onChange={(v) => dispatchForm({ field: "authorName", value: v })}
             />
           </div>
 
@@ -678,7 +698,7 @@ export default function SubmitPage({ params }: PageProps) {
             <p
               className="mb-4 text-lg leading-relaxed"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 color: "rgba(180,60,50,0.8)",
               }}
             >
@@ -691,7 +711,7 @@ export default function SubmitPage({ params }: PageProps) {
             disabled={!isReady || status === "loading"}
             className="w-full py-4 text-xl tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-3"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 600,
               color: isReady
                 ? "rgba(139,115,85,0.9)"
@@ -724,7 +744,7 @@ export default function SubmitPage({ params }: PageProps) {
             <p
               className="mt-4 text-center text-base"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 color: "rgba(38,34,32,0.45)",
               }}
             >

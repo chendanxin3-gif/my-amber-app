@@ -12,7 +12,7 @@ export default async function AmberPage({ params }: PageProps) {
 
   const { data: profile, error } = await supabase
     .from("profiles")
-    .select("full_name, custom_intro")
+    .select("full_name, custom_intro, custom_context, custom_scene")
     .eq("id", id)
     .single();
 
@@ -23,6 +23,8 @@ export default async function AmberPage({ params }: PageProps) {
       profileId={id}
       fullName={profile.full_name ?? "你"}
       customIntro={profile.custom_intro ?? ""}
+      customContext={profile.custom_context ?? ""}
+      customScene={profile.custom_scene ?? ""}
     />
   );
 }

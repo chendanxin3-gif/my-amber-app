@@ -17,7 +17,7 @@ export default async function DashboardPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("full_name, custom_intro")
+    .select("full_name, custom_intro, custom_context, custom_scene")
     .eq("id", user.id)
     .single();
 
@@ -50,7 +50,7 @@ export default async function DashboardPage() {
               <p
                 className="text-xs tracking-widest mb-4"
                 style={{
-                  fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                  fontFamily: '"PingFangShiGuang", serif',
                   fontWeight: 300,
                   color: "rgba(139,115,85,0.6)",
                   letterSpacing: "0.2em",
@@ -80,6 +80,8 @@ export default async function DashboardPage() {
           userId={user.id}
           initialFullName={profile?.full_name ?? ""}
           initialCustomIntro={profile?.custom_intro ?? ""}
+          initialCustomContext={profile?.custom_context ?? ""}
+          initialCustomScene={profile?.custom_scene ?? ""}
           shareUrl={shareUrl}
           ambers={ambers ?? []}
         />
@@ -89,7 +91,7 @@ export default async function DashboardPage() {
           <p
             className="text-xs tracking-widest"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 300,
               color: "rgba(139,115,85,0.25)",
               letterSpacing: "0.2em",

@@ -33,7 +33,7 @@ function AmberTextarea({
         border: "none",
         borderBottom: `1px solid ${focused ? GOLD : "rgba(38,34,32,0.12)"}`,
         color: "#262220",
-        fontFamily: "var(--font-noto-sans-sc), sans-serif",
+        fontFamily: '"PingFangShiGuang", serif',
         fontWeight: 300,
         fontSize: "1.125rem",
         lineHeight: "1.9",
@@ -72,7 +72,7 @@ function AmberInput({
         border: "none",
         borderBottom: `1px solid ${focused ? GOLD : "rgba(38,34,32,0.12)"}`,
         color: "#262220",
-        fontFamily: "var(--font-noto-sans-sc), sans-serif",
+        fontFamily: '"PingFangShiGuang", serif',
         fontWeight: 300,
         fontSize: "1.125rem",
         lineHeight: "1.9",
@@ -92,16 +92,22 @@ interface ProfileFormProps {
   userId: string;
   initialFullName: string;
   initialCustomIntro: string;
+  initialCustomContext: string;
+  initialCustomScene: string;
 }
 
 export function ProfileForm({
   userId,
   initialFullName,
   initialCustomIntro,
+  initialCustomContext,
+  initialCustomScene,
 }: ProfileFormProps) {
   const supabase = createClient();
   const [fullName, setFullName] = useState(initialFullName);
   const [customIntro, setCustomIntro] = useState(initialCustomIntro);
+  const [customContext, setCustomContext] = useState(initialCustomContext);
+  const [customScene, setCustomScene] = useState(initialCustomScene);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
 
   const handleSave = async () => {
@@ -112,6 +118,8 @@ export function ProfileForm({
         id: userId,
         full_name: fullName.trim(),
         custom_intro: customIntro.trim(),
+        custom_context: customContext.trim(),
+        custom_scene: customScene.trim(),
       });
     setSaveStatus(error ? "error" : "saved");
     if (!error) {
@@ -126,7 +134,7 @@ export function ProfileForm({
           <label
             className="block text-lg tracking-widest mb-4"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 400,
               color: "rgba(38,34,32,0.65)",
               letterSpacing: "0.18em",
@@ -144,7 +152,7 @@ export function ProfileForm({
           <label
             className="block text-lg tracking-widest mb-4"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 400,
               color: "rgba(38,34,32,0.65)",
               letterSpacing: "0.18em",
@@ -161,12 +169,69 @@ export function ProfileForm({
           <p
             className="mt-3 text-lg leading-relaxed"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 400,
               color: "rgba(38,34,32,0.45)",
             }}
           >
             这段引言将展示在你的专属填写页，为受邀者营造情绪氛围。
+          </p>
+        </div>
+        <div>
+          <label
+            className="block text-lg tracking-widest mb-4"
+            style={{
+              fontFamily: '"PingFangShiGuang", serif',
+              fontWeight: 400,
+              color: "rgba(38,34,32,0.65)",
+              letterSpacing: "0.18em",
+            }}
+          >
+            场域描述
+          </label>
+          <AmberTextarea
+            placeholder="在巴厘岛这 8 天的日夜、屏幕前的 Bug 与岛屿的晚风里，我们共同构建了一个短暂却真实的场域。我知道，那些固有的人设和职业标签在这里是被消解的。"
+            value={customContext}
+            onChange={setCustomContext}
+            rows={4}
+          />
+          <p
+            className="mt-3 text-lg leading-relaxed"
+            style={{
+              fontFamily: '"PingFangShiGuang", serif',
+              fontWeight: 400,
+              color: "rgba(38,34,32,0.45)",
+            }}
+          >
+            描述你们共同经历的场域背景，为空时将展示浅色提示文案。
+          </p>
+        </div>
+        <div>
+          <label
+            className="block text-lg tracking-widest mb-4"
+            style={{
+              fontFamily: '"PingFangShiGuang", serif',
+              fontWeight: 400,
+              color: "rgba(38,34,32,0.65)",
+              letterSpacing: "0.18em",
+            }}
+          >
+            这场______的前夕
+          </label>
+          <AmberInput
+            placeholder="人生实验"
+            value={customScene}
+            onChange={setCustomScene}
+          />
+          <p
+            className="mt-3 text-lg leading-relaxed"
+            style={{
+              fontFamily: '"PingFangShiGuang", serif',
+              fontWeight: 400,
+              color: "rgba(38,34,32,0.45)",
+            }}
+          >
+            将出现在「在即将各自退回原有轨道、结束这场____的前夕…」中，为空时默认显示「人生实验」。
           </p>
         </div>
       </div>
@@ -176,7 +241,7 @@ export function ProfileForm({
         disabled={saveStatus === "saving"}
         className="self-start px-8 py-3 text-lg tracking-widest transition-all duration-700 ease-out flex items-center gap-2"
         style={{
-          fontFamily: "var(--font-noto-sans-sc), sans-serif",
+          fontFamily: '"PingFangShiGuang", serif',
           fontWeight: 600,
           color:
             saveStatus === "saved"
@@ -247,7 +312,7 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
       <p
         className="text-lg leading-loose text-center max-w-sm"
         style={{
-          fontFamily: "var(--font-noto-sans-sc), sans-serif",
+          fontFamily: '"PingFangShiGuang", serif',
           fontWeight: 400,
               color: "rgba(38,34,32,0.65)",
               letterSpacing: "0.04em",
@@ -274,7 +339,7 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
             className="flex-1 bg-transparent text-xs outline-none"
             style={{
               color: "rgba(38,34,32,0.6)",
-              fontFamily: "var(--font-geist-mono), monospace",
+              fontFamily: '"PingFangShiGuang", monospace',
               cursor: "text",
             }}
           />
@@ -282,7 +347,7 @@ export function SharePanel({ shareUrl }: SharePanelProps) {
             onClick={handleCopy}
             className="text-lg tracking-widest transition-all duration-500 shrink-0"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 600,
               color: copied
                 ? "rgba(139,115,85,0.9)"

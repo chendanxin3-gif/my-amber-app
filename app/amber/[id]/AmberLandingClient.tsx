@@ -9,12 +9,16 @@ interface Props {
   profileId: string;
   fullName: string;
   customIntro: string;
+  customContext: string;
+  customScene: string;
 }
 
 export default function AmberLandingClient({
   profileId,
   fullName,
   customIntro,
+  customContext,
+  customScene,
 }: Props) {
   const router = useRouter();
   const [actTwo, setActTwo] = useState(false);
@@ -22,6 +26,11 @@ export default function AmberLandingClient({
   const intro = customIntro.trim()
     ? customIntro
     : "日本茶道讲「一期一会」，意味着此时此刻的相遇、这杯茶、坐在这里的人，一生仅有一次，绝不重来。";
+
+  const contextPlaceholder =
+    "在巴厘岛这 8 天的日夜、屏幕前的 Bug 与岛屿的晚风里，我们共同构建了一个短暂却真实的场域。我知道，那些固有的人设和职业标签在这里是被消解的。";
+
+  const scene = customScene.trim() || "人生实验";
 
   return (
     <main
@@ -51,7 +60,7 @@ export default function AmberLandingClient({
           <p
             className="leading-loose mb-8"
             style={{
-              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontSize: "clamp(1.5rem, 3vw, 1.875rem)",
               fontWeight: 600,
               color: "rgba(38,34,32,0.82)",
@@ -64,7 +73,7 @@ export default function AmberLandingClient({
           <p
             className="leading-loose text-lg md:text-xl mb-8"
             style={{
-              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontFamily: '"PingFangShiGuang", serif',
               color: "rgba(38,34,32,0.82)",
               letterSpacing: "0.04em",
             }}
@@ -74,22 +83,24 @@ export default function AmberLandingClient({
           <p
             className="leading-loose text-lg md:text-xl mb-8"
             style={{
-              fontFamily: "var(--font-noto-serif-sc), serif",
-              color: "rgba(38,34,32,0.82)",
+              fontFamily: '"PingFangShiGuang", serif',
+              color: customContext.trim()
+                ? "rgba(38,34,32,0.82)"
+                : "rgba(38,34,32,0.35)",
               letterSpacing: "0.04em",
             }}
           >
-            在巴厘岛这 8 天的日夜、屏幕前的 Bug 与岛屿的晚风里，我们共同构建了一个短暂却真实的场域。我知道，那些固有的人设和职业标签在这里是被消解的。
+            {customContext.trim() || contextPlaceholder}
           </p>
           <p
             className="leading-loose text-lg md:text-xl"
             style={{
-              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontFamily: '"PingFangShiGuang", serif',
               color: "rgba(38,34,32,0.82)",
               letterSpacing: "0.04em",
             }}
           >
-            在即将各自退回原有轨道、结束这场人生实验的前夕，我想请你一起封存属于我们的记忆：借你的眼睛，凝固那个我未曾察觉的自己……
+            在即将各自退回原有轨道、结束这场{scene}的前夕，我想请你一起封存属于我们的记忆：借你的眼睛，凝固那个我未曾察觉的自己……
           </p>
         </div>
 
@@ -113,7 +124,7 @@ export default function AmberLandingClient({
           <span
             className="tracking-widest"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 700,
               fontSize: "1.15rem",
               color: "rgba(139,115,85,0.8)",
@@ -164,7 +175,7 @@ export default function AmberLandingClient({
                 <p
                   className="text-lg leading-loose"
                   style={{
-                    fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                    fontFamily: '"PingFangShiGuang", serif',
                     color: "rgba(38,34,32,0.75)",
                   }}
                 >
@@ -179,7 +190,7 @@ export default function AmberLandingClient({
             onClick={() => router.push(`/amber/${profileId}/submit`)}
             className="px-12 py-4 text-lg tracking-widest transition-all duration-700 ease-out"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 600,
               color: "rgba(139,115,85,0.9)",
               border: "1px solid rgba(139,115,85,0.3)",

@@ -12,6 +12,8 @@ type AuthStatus = "idle" | "loading" | "error";
 const GOLD = "#8b7355";
 const GOLD_BORDER = "rgba(139,115,85,0.3)";
 
+const supabase = createClient();
+
 function AmberInput({
   type,
   placeholder,
@@ -38,7 +40,7 @@ function AmberInput({
         border: "none",
         borderBottom: `1px solid ${focused ? GOLD : "rgba(38,34,32,0.15)"}`,
         color: "#262220",
-        fontFamily: "var(--font-noto-sans-sc), sans-serif",
+        fontFamily: '"PingFangShiGuang", serif',
         fontSize: "1.25rem",
         lineHeight: "1.9",
         padding: "8px 0",
@@ -53,7 +55,6 @@ function AmberInput({
 
 export default function LandingPage() {
   const router = useRouter();
-  const supabase = createClient();
 
   const [actTwo, setActTwo] = useState(false);
   const [authMode, setAuthMode] = useState<AuthMode>("login");
@@ -161,7 +162,7 @@ export default function LandingPage() {
           <p
             className="leading-loose"
             style={{
-              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 500,
               fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)",
               color: "rgba(38,34,32,0.72)",
@@ -174,7 +175,7 @@ export default function LandingPage() {
           <p
             className="mt-7 leading-loose"
             style={{
-              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 400,
               fontSize: "clamp(0.88rem, 1.6vw, 1.02rem)",
               color: "rgba(38,34,32,0.62)",
@@ -187,7 +188,7 @@ export default function LandingPage() {
           <p
             className="mt-7 leading-loose"
             style={{
-              fontFamily: "var(--font-noto-serif-sc), serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 400,
               fontSize: "clamp(0.88rem, 1.6vw, 1.02rem)",
               color: "rgba(38,34,32,0.62)",
@@ -219,7 +220,7 @@ export default function LandingPage() {
           </svg>
           <span
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 700,
               fontSize: "0.95rem",
               color: "rgba(139,115,85,0.7)",
@@ -283,7 +284,7 @@ export default function LandingPage() {
                 }}
                 className="text-lg tracking-widest transition-all duration-500"
                 style={{
-                  fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                  fontFamily: '"PingFangShiGuang", serif',
                   fontWeight: 600,
                   color:
                     authMode === mode
@@ -325,7 +326,7 @@ export default function LandingPage() {
             <p
               className="mb-4 text-lg leading-relaxed"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 color: "rgba(180,60,50,0.8)",
               }}
             >
@@ -336,7 +337,7 @@ export default function LandingPage() {
             <p
               className="mb-4 text-lg leading-relaxed"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 color: "rgba(139,115,85,0.9)",
               }}
             >
@@ -350,7 +351,7 @@ export default function LandingPage() {
             disabled={authStatus === "loading"}
             className="w-full py-3 text-lg tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 600,
               color: "rgba(139,115,85,0.9)",
               border: `1px solid ${GOLD_BORDER}`,
@@ -383,7 +384,7 @@ export default function LandingPage() {
             />
             <span
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 300,
                 fontSize: "1rem",
                 color: "rgba(38,34,32,0.4)",
@@ -402,7 +403,7 @@ export default function LandingPage() {
             onClick={handleGithubLogin}
             className="w-full py-3 text-lg tracking-widest transition-all duration-700 ease-out flex items-center justify-center gap-2"
             style={{
-              fontFamily: "var(--font-noto-sans-sc), sans-serif",
+              fontFamily: '"PingFangShiGuang", serif',
               fontWeight: 600,
               color: "rgba(38,34,32,0.6)",
               border: "1px solid rgba(38,34,32,0.1)",

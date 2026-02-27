@@ -23,6 +23,8 @@ interface DashboardTabsProps {
   userId: string;
   initialFullName: string;
   initialCustomIntro: string;
+  initialCustomContext: string;
+  initialCustomScene: string;
   shareUrl: string;
   ambers: AmberEntry[];
 }
@@ -37,6 +39,8 @@ export default function DashboardTabs({
   userId,
   initialFullName,
   initialCustomIntro,
+  initialCustomContext,
+  initialCustomScene,
   shareUrl,
   ambers,
 }: DashboardTabsProps) {
@@ -60,7 +64,7 @@ export default function DashboardTabs({
               onClick={() => setActiveTab(tab.id)}
               className="relative pb-4 text-lg tracking-widest transition-all duration-500"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 600,
                 color: isActive
                   ? "rgba(139,115,85,0.95)"
@@ -92,7 +96,7 @@ export default function DashboardTabs({
             <p
               className="text-lg tracking-widest"
               style={{
-                fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                fontFamily: '"PingFangShiGuang", serif',
                 fontWeight: 400,
                 color: "rgba(38,34,32,0.55)",
                 letterSpacing: "0.18em",
@@ -123,7 +127,7 @@ export default function DashboardTabs({
               <h2
                 className="tracking-widest mb-3"
                 style={{
-                  fontFamily: "var(--font-noto-serif-sc), serif",
+                  fontFamily: '"PingFangShiGuang", serif',
                   fontWeight: 300,
                   fontSize: "1.1rem",
                   color: "rgba(38,34,32,0.75)",
@@ -135,7 +139,7 @@ export default function DashboardTabs({
               <p
                 className="text-lg leading-loose"
                 style={{
-                  fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                  fontFamily: '"PingFangShiGuang", serif',
                   fontWeight: 400,
                   color: "rgba(38,34,32,0.55)",
                   letterSpacing: "0.06em",
@@ -148,6 +152,8 @@ export default function DashboardTabs({
               userId={userId}
               initialFullName={initialFullName}
               initialCustomIntro={initialCustomIntro}
+              initialCustomContext={initialCustomContext}
+              initialCustomScene={initialCustomScene}
             />
           </div>
         </div>
@@ -160,7 +166,7 @@ export default function DashboardTabs({
               <h2
                 className="tracking-widest mb-3"
                 style={{
-                  fontFamily: "var(--font-noto-serif-sc), serif",
+                  fontFamily: '"PingFangShiGuang", serif',
                   fontWeight: 300,
                   fontSize: "1.1rem",
                   color: "rgba(38,34,32,0.75)",
@@ -172,7 +178,7 @@ export default function DashboardTabs({
               <p
                 className="text-lg leading-loose"
                 style={{
-                  fontFamily: "var(--font-noto-sans-sc), sans-serif",
+                  fontFamily: '"PingFangShiGuang", serif',
                   fontWeight: 400,
                   color: "rgba(38,34,32,0.55)",
                   letterSpacing: "0.06em",

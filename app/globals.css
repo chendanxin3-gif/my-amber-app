@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
+/* 优先加载 woff2（体积更小）。若尚未转换，可运行：pip install fonttools brotli && pyftsubset public/fonts/PingFangShiGuang.ttf --output-file=public/fonts/PingFangShiGuang.woff2 --flavor=woff2 */
 @font-face {
   font-family: "PingFangShiGuang";
-  src: url("/fonts/PingFangShiGuang.ttf") format("truetype");
+  src: url("/fonts/PingFangShiGuang.woff2") format("woff2"), url("/fonts/PingFangShiGuang.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -19,9 +20,9 @@
   --gold-glow: rgba(139, 115, 85, 0.12);
   --paper: #F4F1EE;
   --paper-warm: #EDE9E4;
-  --font-serif: "PingFangShiGuang", "Noto Serif SC", Georgia, serif;
-  --font-sans: "PingFangShiGuang", "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  --font-serif: "PingFangShiGuang", serif;
+  --font-sans: "PingFangShiGuang", sans-serif;
+  --font-mono: "PingFangShiGuang", monospace;
 }
 
 @theme inline {
@@ -36,7 +37,7 @@ html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "PingFangShiGuang", var(--font-sans);
+  font-family: "PingFangShiGuang", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
